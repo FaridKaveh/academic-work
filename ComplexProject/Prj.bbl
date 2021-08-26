@@ -1,0 +1,240 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{cms/global//global/global}
+    \entry{Bornemann2011}{article}{}
+      \name{author}{1}{}{%
+        {{hash=df36c158fa29919eeedf5e1e98949842}{%
+           family={Bornemann},
+           familyi={B\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{df36c158fa29919eeedf5e1e98949842}
+      \strng{fullhash}{df36c158fa29919eeedf5e1e98949842}
+      \strng{bibnamehash}{df36c158fa29919eeedf5e1e98949842}
+      \strng{authorbibnamehash}{df36c158fa29919eeedf5e1e98949842}
+      \strng{authornamehash}{df36c158fa29919eeedf5e1e98949842}
+      \strng{authorfullhash}{df36c158fa29919eeedf5e1e98949842}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Foundations of Computational Mathematics}
+      \field{title}{Accuracy and Stability of Computing Higher-Order Derivative of Analytic Functions by Cauchy Integrals}
+      \field{volume}{11}
+      \field{year}{2011}
+      \field{pages}{1\bibrangedash 63}
+      \range{pages}{63}
+      \verb{doi}
+      \verb 10.1007/s10208-010-9075-z
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s10208-010-9075-z
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s10208-010-9075-z
+      \endverb
+    \endentry
+    \entry{Higham}{book}{}
+      \name{author}{1}{}{%
+        {{hash=5bec9d02065c9b35d45c881a24f7a1cd}{%
+           family={Higham},
+           familyi={H\bibinitperiod},
+           given={Nicholas\bibnamedelima J.},
+           giveni={N\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Philadelphia, Pa}%
+      }
+      \list{publisher}{1}{%
+        {Society for Industrial & Applied Mathematics ;}%
+      }
+      \strng{namehash}{5bec9d02065c9b35d45c881a24f7a1cd}
+      \strng{fullhash}{5bec9d02065c9b35d45c881a24f7a1cd}
+      \strng{bibnamehash}{5bec9d02065c9b35d45c881a24f7a1cd}
+      \strng{authorbibnamehash}{5bec9d02065c9b35d45c881a24f7a1cd}
+      \strng{authornamehash}{5bec9d02065c9b35d45c881a24f7a1cd}
+      \strng{authorfullhash}{5bec9d02065c9b35d45c881a24f7a1cd}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Functions of matrices : theory and computation}
+      \field{isbn}{9780898716467}
+      \field{title}{Functions of matrices : theory and computation}
+      \field{year}{2008}
+      \keyw{Matrices}
+    \endentry
+    \entry{R.Mathias}{article}{}
+      \name{author}{1}{}{%
+        {{hash=e6281881951e50ba83874415f7301b38}{%
+           family={Mathias},
+           familyi={M\bibinitperiod},
+           given={Roy},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{e6281881951e50ba83874415f7301b38}
+      \strng{fullhash}{e6281881951e50ba83874415f7301b38}
+      \strng{bibnamehash}{e6281881951e50ba83874415f7301b38}
+      \strng{authorbibnamehash}{e6281881951e50ba83874415f7301b38}
+      \strng{authornamehash}{e6281881951e50ba83874415f7301b38}
+      \strng{authorfullhash}{e6281881951e50ba83874415f7301b38}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Matrix Analysis and Applications}
+      \field{number}{4}
+      \field{title}{Approximation of Matrix-Valued Functions}
+      \field{volume}{14}
+      \field{year}{1993}
+      \field{pages}{1061\bibrangedash 1063}
+      \range{pages}{3}
+      \verb{doi}
+      \verb 10.1137/0614070
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1137/0614070
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1137/0614070
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1137/0614070
+      \endverb
+    \endentry
+    \entry{Trench}{article}{}
+      \name{author}{1}{}{%
+        {{hash=e71cf10a0b8c09a3d5fe19390cdf6a31}{%
+           family={Trench},
+           familyi={T\bibinitperiod},
+           given={William\bibnamedelima F.},
+           giveni={W\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{e71cf10a0b8c09a3d5fe19390cdf6a31}
+      \strng{fullhash}{e71cf10a0b8c09a3d5fe19390cdf6a31}
+      \strng{bibnamehash}{e71cf10a0b8c09a3d5fe19390cdf6a31}
+      \strng{authorbibnamehash}{e71cf10a0b8c09a3d5fe19390cdf6a31}
+      \strng{authornamehash}{e71cf10a0b8c09a3d5fe19390cdf6a31}
+      \strng{authorfullhash}{e71cf10a0b8c09a3d5fe19390cdf6a31}
+      \field{sortinit}{T}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Society for Industrial and Applied Mathematics}
+      \field{number}{3}
+      \field{title}{An Algorithm for the Inversion of Finite Toeplitz Matrices}
+      \field{volume}{12}
+      \field{year}{1964}
+      \field{pages}{515\bibrangedash 522}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1137/0112045
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1137/0112045
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1137/0112045
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1137/0112045
+      \endverb
+    \endentry
+    \entry{tveit2003complexity}{article}{}
+      \name{author}{1}{}{%
+        {{hash=12fb41d9e166697e4634e5504540c7b3}{%
+           family={Tveit},
+           familyi={T\bibinitperiod},
+           given={Amund},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Norwegian University of Science}%
+        {Technology, Trondheim}%
+      }
+      \strng{namehash}{12fb41d9e166697e4634e5504540c7b3}
+      \strng{fullhash}{12fb41d9e166697e4634e5504540c7b3}
+      \strng{bibnamehash}{12fb41d9e166697e4634e5504540c7b3}
+      \strng{authorbibnamehash}{12fb41d9e166697e4634e5504540c7b3}
+      \strng{authornamehash}{12fb41d9e166697e4634e5504540c7b3}
+      \strng{authorfullhash}{12fb41d9e166697e4634e5504540c7b3}
+      \field{sortinit}{T}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Note}
+      \field{title}{On the complexity of matrix inversion}
+      \field{year}{2003}
+      \field{pages}{1}
+      \range{pages}{1}
+    \endentry
+    \entry{Zohar}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f50caa7d8b780cf6a447b333d8defd4c}{%
+           family={Zohar},
+           familyi={Z\bibinitperiod},
+           given={Shalhav},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{f50caa7d8b780cf6a447b333d8defd4c}
+      \strng{fullhash}{f50caa7d8b780cf6a447b333d8defd4c}
+      \strng{bibnamehash}{f50caa7d8b780cf6a447b333d8defd4c}
+      \strng{authorbibnamehash}{f50caa7d8b780cf6a447b333d8defd4c}
+      \strng{authornamehash}{f50caa7d8b780cf6a447b333d8defd4c}
+      \strng{authorfullhash}{f50caa7d8b780cf6a447b333d8defd4c}
+      \field{sortinit}{Z}
+      \field{sortinithash}{8f7b480688e809b50b6f6577b16f3db5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The algorithm of W. F. Trench for the inversion of Toeplitz matrices is presented with a detailed proof for the case of non-Hermitian matrices. The only condition necessary to insure the validity of the algorithm is that all principal minors be nonzero.}
+      \field{issn}{0004-5411}
+      \field{journaltitle}{J. ACM}
+      \field{month}{10}
+      \field{number}{4}
+      \field{title}{Toeplitz Matrix Inversion: The Algorithm of W. F. Trench}
+      \field{volume}{16}
+      \field{year}{1969}
+      \field{pages}{592\bibrangedash 601}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1145/321541.321549
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/321541.321549
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/321541.321549
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
