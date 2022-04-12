@@ -1,0 +1,373 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{bai2003hermitian}{article}{}
+      \name{author}{3}{}{%
+        {{hash=df8cd109974776a653e89553e79a72eb}{%
+           family={Bai},
+           familyi={B\bibinitperiod},
+           given={Zhong-Zhi},
+           giveni={Z\bibinithyphendelim Z\bibinitperiod}}}%
+        {{hash=8b856da92ad549d323acc679ecf7f474}{%
+           family={Golub},
+           familyi={G\bibinitperiod},
+           given={Gene\bibnamedelima H},
+           giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=4a2222ab6569b8b6272c036f34204c1d}{%
+           family={Ng},
+           familyi={N\bibinitperiod},
+           given={Michael\bibnamedelima K},
+           giveni={M\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{8e485989c787b2dbd972f0e40867dd09}
+      \strng{fullhash}{8e485989c787b2dbd972f0e40867dd09}
+      \strng{bibnamehash}{8e485989c787b2dbd972f0e40867dd09}
+      \strng{authorbibnamehash}{8e485989c787b2dbd972f0e40867dd09}
+      \strng{authornamehash}{8e485989c787b2dbd972f0e40867dd09}
+      \strng{authorfullhash}{8e485989c787b2dbd972f0e40867dd09}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Matrix Analysis and Applications}
+      \field{number}{3}
+      \field{title}{Hermitian and skew-Hermitian splitting methods for non-Hermitian positive definite linear systems}
+      \field{volume}{24}
+      \field{year}{2003}
+      \field{pages}{603\bibrangedash 626}
+      \range{pages}{24}
+    \endentry
+    \entry{two_two_block_optimal}{article}{}
+      \name{author}{3}{}{%
+        {{hash=df8cd109974776a653e89553e79a72eb}{%
+           family={Bai},
+           familyi={B\bibinitperiod},
+           given={Zhong-Zhi},
+           giveni={Z\bibinithyphendelim Z\bibinitperiod}}}%
+        {{hash=8b856da92ad549d323acc679ecf7f474}{%
+           family={Golub.},
+           familyi={G\bibinitperiod},
+           given={Gene\bibnamedelima H.},
+           giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=3b97fcb5868e4819b72eeae850be7e90}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Chi-Kwong},
+           giveni={C\bibinithyphendelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{be15914ea5ab6b5b6e6130c0d9dca664}
+      \strng{fullhash}{be15914ea5ab6b5b6e6130c0d9dca664}
+      \strng{bibnamehash}{be15914ea5ab6b5b6e6130c0d9dca664}
+      \strng{authorbibnamehash}{be15914ea5ab6b5b6e6130c0d9dca664}
+      \strng{authornamehash}{be15914ea5ab6b5b6e6130c0d9dca664}
+      \strng{authorfullhash}{be15914ea5ab6b5b6e6130c0d9dca664}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Scientific Computing}
+      \field{number}{2}
+      \field{title}{Optimal Parameter in Hermitian and Skew-Hermitian Splitting Method for Certain Two-by-Two Block Matrices}
+      \field{volume}{28}
+      \field{year}{2006}
+      \field{pages}{583\bibrangedash 603}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1137/050623644
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1137/050623644
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1137/050623644
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1137/050623644
+      \endverb
+    \endentry
+    \entry{bai2010newton}{article}{}
+      \name{author}{2}{}{%
+        {{hash=df8cd109974776a653e89553e79a72eb}{%
+           family={Bai},
+           familyi={B\bibinitperiod},
+           given={Zhong-Zhi},
+           giveni={Z\bibinithyphendelim Z\bibinitperiod}}}%
+        {{hash=5f84bb08a6b35f80feae90d33d0f7278}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Xue-Ping},
+           giveni={X\bibinithyphendelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{47127cdcc96646c2054da8d94afad794}
+      \strng{fullhash}{47127cdcc96646c2054da8d94afad794}
+      \strng{bibnamehash}{47127cdcc96646c2054da8d94afad794}
+      \strng{authorbibnamehash}{47127cdcc96646c2054da8d94afad794}
+      \strng{authornamehash}{47127cdcc96646c2054da8d94afad794}
+      \strng{authorfullhash}{47127cdcc96646c2054da8d94afad794}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of computational mathematics}
+      \field{title}{On Newton-HSS methods for systems of nonlinear equations with positive-definite Jacobian matrices}
+      \field{year}{2010}
+      \field{pages}{235\bibrangedash 260}
+      \range{pages}{26}
+    \endentry
+    \entry{bai2005block}{article}{}
+      \name{author}{4}{}{%
+        {{hash=df8cd109974776a653e89553e79a72eb}{%
+           family={Bai},
+           familyi={B\bibinitperiod},
+           given={Zhong-Zhi},
+           giveni={Z\bibinithyphendelim Z\bibinitperiod}}}%
+        {{hash=8b856da92ad549d323acc679ecf7f474}{%
+           family={Golub},
+           familyi={G\bibinitperiod},
+           given={Gene\bibnamedelima H},
+           giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=eca638ff9bd0de13e41f49a673bbab57}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={Lin-Zhang},
+           giveni={L\bibinithyphendelim Z\bibinitperiod}}}%
+        {{hash=5be197d7e10dc5ac714ad42d58f26a1d}{%
+           family={Yin},
+           familyi={Y\bibinitperiod},
+           given={Jun-Feng},
+           giveni={J\bibinithyphendelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{082184d6828aebebc4ba7793a54b5252}
+      \strng{fullhash}{39d93be8348aa423e7378b666e0f3659}
+      \strng{bibnamehash}{082184d6828aebebc4ba7793a54b5252}
+      \strng{authorbibnamehash}{082184d6828aebebc4ba7793a54b5252}
+      \strng{authornamehash}{082184d6828aebebc4ba7793a54b5252}
+      \strng{authorfullhash}{39d93be8348aa423e7378b666e0f3659}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Scientific Computing}
+      \field{number}{3}
+      \field{title}{Block triangular and skew-Hermitian splitting methods for positive-definite linear systems}
+      \field{volume}{26}
+      \field{year}{2005}
+      \field{pages}{844\bibrangedash 863}
+      \range{pages}{20}
+    \endentry
+    \entry{AppliedNumerical}{book}{}
+      \name{author}{1}{}{%
+        {{hash=e695aa321898b526ee50457fe1e0e9cc}{%
+           family={Demmel},
+           familyi={D\bibinitperiod},
+           given={James\bibnamedelima W.},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Society for Industrial}%
+        {Applied Mathematics}%
+      }
+      \strng{namehash}{e695aa321898b526ee50457fe1e0e9cc}
+      \strng{fullhash}{e695aa321898b526ee50457fe1e0e9cc}
+      \strng{bibnamehash}{e695aa321898b526ee50457fe1e0e9cc}
+      \strng{authorbibnamehash}{e695aa321898b526ee50457fe1e0e9cc}
+      \strng{authornamehash}{e695aa321898b526ee50457fe1e0e9cc}
+      \strng{authorfullhash}{e695aa321898b526ee50457fe1e0e9cc}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Applied Numerical Linear Algebra}
+      \field{year}{1997}
+      \verb{doi}
+      \verb 10.1137/1.9781611971446
+      \endverb
+      \verb{eprint}
+      \verb https://epubs.siam.org/doi/pdf/10.1137/1.9781611971446
+      \endverb
+      \verb{urlraw}
+      \verb https://epubs.siam.org/doi/abs/10.1137/1.9781611971446
+      \endverb
+      \verb{url}
+      \verb https://epubs.siam.org/doi/abs/10.1137/1.9781611971446
+      \endverb
+    \endentry
+    \entry{greif1999block}{article}{}
+      \name{author}{2}{}{%
+        {{hash=e7ffef330967cbed4ae15dd19e2f9897}{%
+           family={Greif},
+           familyi={G\bibinitperiod},
+           given={Chen},
+           giveni={C\bibinitperiod}}}%
+        {{hash=b206819bcb80fdde9a70b2302ee1f4bc}{%
+           family={Varah},
+           familyi={V\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{f856910032947d314ba3ed23d3ad81ff}
+      \strng{fullhash}{f856910032947d314ba3ed23d3ad81ff}
+      \strng{bibnamehash}{f856910032947d314ba3ed23d3ad81ff}
+      \strng{authorbibnamehash}{f856910032947d314ba3ed23d3ad81ff}
+      \strng{authornamehash}{f856910032947d314ba3ed23d3ad81ff}
+      \strng{authorfullhash}{f856910032947d314ba3ed23d3ad81ff}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM journal on matrix analysis and applications}
+      \field{number}{4}
+      \field{title}{Block stationary methods for nonsymmetric cyclically reduced systems arising from three-dimensional elliptic equations}
+      \field{volume}{20}
+      \field{year}{1999}
+      \field{pages}{1038\bibrangedash 1059}
+      \range{pages}{22}
+    \endentry
+    \entry{HUANG2014142}{article}{}
+      \name{author}{1}{}{%
+        {{hash=c83e373be811aedac3a125939d47f7f9}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Yu-Mei},
+           giveni={Y\bibinithyphendelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{c83e373be811aedac3a125939d47f7f9}
+      \strng{fullhash}{c83e373be811aedac3a125939d47f7f9}
+      \strng{bibnamehash}{c83e373be811aedac3a125939d47f7f9}
+      \strng{authorbibnamehash}{c83e373be811aedac3a125939d47f7f9}
+      \strng{authornamehash}{c83e373be811aedac3a125939d47f7f9}
+      \strng{authorfullhash}{c83e373be811aedac3a125939d47f7f9}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In the HSS iteration methods proposed by Bai, Golub and Ng [Z.-Z. Bai, G.H. Golub, M.K. Ng, Hermitian and skew-Hermitian splitting methods for non-Hermitian positive definite linear systems, SIAM. J. Matrix Anal. Appl. 24 (2003) 603–626], the determination of the optimal parameter is a tough task when solving a non-Hermitian positive definite linear system. In this paper, a new and simple strategy for obtaining the optimal parameter is proposed, which computes the optimal parameter by solving a cubic polynomial equation. The coefficients of this polynomial are determined by several traces of some matrices related to the symmetric and skew-symmetric parts of the coefficient matrix of the real linear system. Numerical experiments show that our new strategy is very effective for approximating the optimal parameter in the HSS iteration methods as it leads to fast convergence of the method.}
+      \field{issn}{0377-0427}
+      \field{journaltitle}{Journal of Computational and Applied Mathematics}
+      \field{title}{A practical formula for computing optimal parameters in the HSS iteration methods}
+      \field{volume}{255}
+      \field{year}{2014}
+      \field{pages}{142\bibrangedash 149}
+      \range{pages}{8}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.cam.2013.01.023
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0377042713002483
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0377042713002483
+      \endverb
+      \keyw{The HSS iteration methods,Optimal parameter,Cubic equation,Matrix trace}
+    \endentry
+    \entry{JIANG1997165}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c1c7d888032bc800fa0d08e706771afe}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={Erxiong},
+           giveni={E\bibinitperiod}}}%
+        {{hash=0659a2b86baf3049471fa67af5c36b6c}{%
+           family={Lam},
+           familyi={L\bibinitperiod},
+           given={Peter\bibnamedelima C.B.},
+           giveni={P\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{77c2e9c5bfef3a1790dd51c4703ce2bd}
+      \strng{fullhash}{77c2e9c5bfef3a1790dd51c4703ce2bd}
+      \strng{bibnamehash}{77c2e9c5bfef3a1790dd51c4703ce2bd}
+      \strng{authorbibnamehash}{77c2e9c5bfef3a1790dd51c4703ce2bd}
+      \strng{authornamehash}{77c2e9c5bfef3a1790dd51c4703ce2bd}
+      \strng{authorfullhash}{77c2e9c5bfef3a1790dd51c4703ce2bd}
+      \field{sortinit}{J}
+      \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{By constructing a special similarity transformation matrix, an upper bound for the spectral condition number of a diagonalizable matrix is obtained. This bound can be used in the QR algorithm to estimate the accuracy of the computed eigenvalues.}
+      \field{issn}{0024-3795}
+      \field{journaltitle}{Linear Algebra and its Applications}
+      \field{title}{An upper bound for the spectral condition number of a diagonalizable matrix}
+      \field{volume}{262}
+      \field{year}{1997}
+      \field{pages}{165\bibrangedash 178}
+      \range{pages}{14}
+      \verb{doi}
+      \verb https://doi.org/10.1016/S0024-3795(97)80029-8
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0024379597800298
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0024379597800298
+      \endverb
+    \endentry
+    \entry{MATHIAS1990269}{article}{}
+      \name{author}{1}{}{%
+        {{hash=e6281881951e50ba83874415f7301b38}{%
+           family={Mathias},
+           familyi={M\bibinitperiod},
+           given={Roy},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{e6281881951e50ba83874415f7301b38}
+      \strng{fullhash}{e6281881951e50ba83874415f7301b38}
+      \strng{bibnamehash}{e6281881951e50ba83874415f7301b38}
+      \strng{authorbibnamehash}{e6281881951e50ba83874415f7301b38}
+      \strng{authornamehash}{e6281881951e50ba83874415f7301b38}
+      \strng{authorfullhash}{e6281881951e50ba83874415f7301b38}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Given a matrix A=[aij], define ‖A‖=[‖aij‖]. Let ⦀ · ⦀2 denote the spectral norm. We show that for any matrix A ⦀‖A‖⦀2=min{r1(B)c1(C):B∘C=A} and show that under mild conditions the minimizers in (1) are essentially unique and are related to the left and right singular vectors of A in a simple way. We also show that ⦀A⦀2⩽⦀‖A‖⦀2 and determine the case of equality.}
+      \field{issn}{0024-3795}
+      \field{journaltitle}{Linear Algebra and its Applications}
+      \field{title}{The spectral norm of a nonnegative matrix}
+      \field{volume}{139}
+      \field{year}{1990}
+      \field{pages}{269\bibrangedash 284}
+      \range{pages}{16}
+      \verb{doi}
+      \verb https://doi.org/10.1016/0024-3795(90)90403-Y
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/002437959090403Y
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/002437959090403Y
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
