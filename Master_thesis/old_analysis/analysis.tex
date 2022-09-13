@@ -1,0 +1,608 @@
+\documentclass{article}
+
+\usepackage{amssymb, amsmath}
+\usepackage{mathtools}
+\usepackage{bbold}
+\usepackage[margin = 1.0in]{geometry}
+\usepackage{physics}
+\usepackage[bordercolor = black, backgroundcolor = blue, linecolor = blue,
+textcolor = white]{todonotes}
+
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bP}{\mathbb{P}}
+
+
+\setlength\parindent{0pt}
+\setlength\parskip{5pt}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+\section{Single Particle} \todo{To adjust: as $\tau \rightarrow 0$ it goes to $dt$. }
+Considering particle $a$ in isolation, we have the transition matrix
+
+\begin{equation}
+  W_a = \begin{pmatrix} -\alpha && \alpha \\
+  \alpha && -\alpha \end{pmatrix},
+\end{equation}
+
+where $w_{ij} = w_{i \leftarrow j}$. This has the decomposition
+
+\begin{equation} W_a = Q^{-1} \begin{pmatrix} 0 && 0 \\
+0 && -2\alpha \end{pmatrix} Q,
+\end{equation}
+
+with $Q = \begin{pmatrix} 1 && 1 \\
+1 && -1 \end{pmatrix}$. Then if $a_t$ is the position of particle $a$ at time $t$, we have that if $a_0 = 1$, $\bP(a_t = 1) =\frac{1}{2}(1+e^{-2\alpha t})$ and $\bP(a_t = 2) = \frac{1}{2}(1-e^{-2\alpha t})$. Then denoting $t_i = i \tau$ for small $\tau$ we can write
+
+\begin{align}
+  \bP(a_{t_{i+1}} = 1 | a_{t_i} = 1) &= \frac{1}{2} (1+e^{-2\alpha \tau}) \\
+  \bP(a_{t_{i+1}} = 2 | a_{t_i} = 1) &= \frac{1}{2} (1-e^{-2\alpha \tau})
+\end{align}
+
+and analogues for the case where $a_{t_i} = 2$. So we have the 'stay' penalty $\frac{1}{2}(1+e^{-2\alpha \tau})$ and the 'leave' penalty $\frac{1}{2}(1-e^{-2\alpha \tau})$.
+
+Now given a path of length $n$
+
+\begin{equation}\mathcal{P} = \{ a_{t_0}, a_{t_1}, \ldots, a_{t_n}\},
+\end{equation}
+
+we have the transition record
+
+\begin{equation}\mathcal{T} = \underbrace{\left \{ (a_{t_1}-a_{t_0}), (a_{t_2}-a_{t_1}), \ldots, (a_{t_n}-a_{t_{n-1}}) \right \}}_{\text{length } n-1}.
+\end{equation}
+
+Then the probabilty of path $\mathcal{P}$ can be expressed as
+
+\begin{equation} \bP(\mathcal{P}) = (\frac{1}{2}(1+e^{-2\alpha \tau}))^{n-1-l}(\frac{1}{2}(1-e^{-2\alpha \tau}))^l,
+\end{equation}
+
+where $l$ is the number of ones in $\mathcal{T}$. It follows that
+
+\begin{equation}
+  \log(\bP(\mathcal{P})) = (n-1-l) \log\left(\frac{1}{2}(1+e^{-2\alpha \tau})\right) + l \log\left(\frac{1}{2}(1-e^{-2\alpha \tau})\right)
+\end{equation}
+
+Taking the limit of $\tau \rightarrow 0$ is equivalent to taking $n = t/\tau$ to infinity, with $t$ fixed. Now
+
+\begin{equation}\label{one_particle_path}
+  \frac{1}{2}(1+e^{-2\alpha\tau}) = 1-\alpha \tau + \mathcal{O}(\tau^2) \approx 1-\alpha t/n
+\end{equation}
+
+
+and
+
+\begin{equation}\label{transition_record}
+  \lim_{n \rightarrow \infty} (1-\alpha t/n)^{n-1-l} = e^{-\alpha t}.
+\end{equation}
+
+Moreover
+
+$$ \frac{1}{2}(1-e^{-2\alpha \tau}) \approx \alpha t/n$$
+
+But taking the limit of $(\alpha/n)^l$ as $n \rightarrow \infty$ gives zero. This makes sense (?) since the measure of a given path approaches zero as $n$ gets large. There is a special case where $l = 0$. In this case the above would suggest
+
+$$\bP(\mathcal{P}) = e^{-\alpha t}$$
+
+i.e. a single path with non-zero measure. All other paths taken toghether would then have probability $1-e^{-\alpha t}$. But we can sum over all paths with $l$ jumps to find non-zero probability:
+
+In general there are $n \choose l$ paths with $l$ transitions, so summing over all such paths \todo{!! change this to an integral over the $l$ transitions times} we have
+
+\begin{equation}
+  \sum_{l' = l}\bP(\mathcal{P}_{l'}) = {n \choose l} e^{-\alpha t}(\alpha \tau)^l.
+\end{equation}
+
+This can be rewritten as
+
+\begin{equation}
+  (\alpha t)^l e^{-\alpha t}\prod_{k=1}^{l+1} \frac{(1-\frac{k}{n})}{l!}  \rightarrow_{n\infty} \frac{(\alpha t)^l}{l!} e^{-\alpha t},
+\end{equation}
+
+i.e. a Poisson distribution with parameter $\alpha t$.
+
+\section{Two Particles, Four States}
+
+Considering two particles with one coupled to the other, we have the transition matrix
+
+\begin{equation}
+  W = \begin{pmatrix} -\alpha - \beta && \beta + \gamma && 0 && \alpha \\
+\beta && -\alpha-\beta-\gamma && \alpha && 0 \\
+0 && \alpha && -\alpha-\beta && \beta +\gamma \\
+\alpha && 0 && \beta && -\alpha -\beta - \gamma   \end{pmatrix},
+\end{equation}
+
+which has the decomposition
+
+\begin{equation}
+  W = Q \begin{pmatrix} 0 &&  &&  &&  \\
+ && -2\alpha &&  &&  \\
+ &&  && -2\beta -\gamma &&  \\
+ &&  &&  && -2\alpha -2\beta - \gamma   \end{pmatrix} Q^{-1}.
+\end{equation}
+
+We have previously calculated $P_{ij \rightarrow kl}(t)$, (see Mathematica notebook). \newpage
+
+Note that of the tweleve possible transitions, the following pairs are identical up to relabelling:
+
+\begin{align}
+  (1,1) &\rightarrow (1,1) \text{ and } (2,2) \rightarrow (2,2) \\
+  (1,1) &\rightarrow (1,2) \text{ and } (2,2) \rightarrow (2,1)\\
+  (1,1) &\rightarrow (2,1) \text{ and } (2,2) \rightarrow (1,2)\\
+  (1,2) &\rightarrow (1,2) \text{ and } (2,1) \rightarrow (2,1)\\
+  (1,2) &\rightarrow (1,1) \text{ and } (2,1) \rightarrow (2,2)\\
+  (1,2) &\rightarrow (2,2) \text{ and } (2,1) \rightarrow (1,1).
+\end{align}
+
+We assume that $\tau$ is small enough such that particles $a$ and $b$ do not transition in the same time frame, i.e. the transitoins
+$(1,1) \leftrightarrow (2,2)$ and $(1,2) \leftrightarrow (2,1)$ are not allowed. We represent each state with a 3-tuple $(p(t), a(t), b(t))$, where $a(t), \: b(t) \in \{ 1, 2\}$ and $p$ is the parity of the state. This will take on value $p = 1 $ for the odd states $(1,2)$ and $(2,1)$, and $p=2$ for the even states $(1,1)$ and $(2,2)$. So a typical join path for particles $a$ and $b$ has the form
+
+\begin{equation}\label{two_particle_path}
+  \mathcal{P} = \left \{ (p_{t_1}, a_{t_1}, b_{t_1}), (p_{t_2}, a_{t_2}, b_{t_2}), \ldots, (p_{t_n}, a_{t_n}, b_{t_n}) \right \}.
+\end{equation}
+
+We now define
+
+\begin{equation}
+  \ast: (i,j,k) \times (k, l, m) \mapsto \left((-1)^i(i+k), (l-j)^2, (m-k)^2\right).
+\end{equation}
+
+Then we define the transition record to be
+
+\begin{equation}
+  \mathcal{T} = \left \{(p_{t_2}, a_{t_2}, b_{t_2}) \ast (p_{t_1}, a_{t_1}, b_{t_1}), \ldots, (p_{t_n}, a_{t_n}, b_{t_n}) \ast (p_{t_{n-1}}, a_{t_{n-1}}, b_{t_{n-1}}) \right \}.
+\end{equation}
+Each possible entry in $\mathcal{T}$ has an associated penalty:
+
+\begin{align}
+  (4,0,0) &: P_{11 \rightarrow 11} \\
+  (3,0,1) &: P_{11 \rightarrow 12} \\
+  (3,1,0) &: P_{11 \rightarrow 21} \\
+  (-2,0,0) &: P_{12 \rightarrow 12} \\
+  (-3,0,1) &: P_{12 \rightarrow 11} \\
+  (-3,1,0) &: P_{12 \rightarrow 22} \\
+\end{align}
+
+
+\subsection*{Limit of matrix powers}
+\begin{theorem}
+Let $A \in \bC^{m\times m}$. Then $\lim_{n\rightarrow \infty}(\mathbb{1}+\frac{1}{n}A)^n = e^A$.
+\end{theorem}
+
+
+\textit{Proof:}  Define $f_n(z) = (1 + z/n)^n$. Note that
+\begin{equation}
+  \abs{(1+\frac{z}{n})^n} \leq (1 + \abs{\frac{z}{n}})^n
+\end{equation}
+
+so for a contour $\gamma$ such that $\sup_{z \in \gamma} \abs{z} = M$, we have the inequality
+
+\begin{equation}
+  \abs{(1+\frac{z}{n})^n} \leq (1 + \frac{\abs{M}}{n})^n \uparrow e^M
+\end{equation}
+
+Now take $\gamma$ to be a simple, closed, positively oriented contour that encloses the spectrum of $A$. Then
+
+\begin{equation}\label{integral_proof}
+  (\mathbb{1}+\frac{1}{n}A)^n = \frac{1}{2\pi i}\oint_\gamma f_n(\zeta)(\zeta\mathbb{1} - A)^{-1}\: d\zeta.
+\end{equation}
+But $f_n(z) \rightarrow e^z$ pointwise and $|f_n| \leq e^M \in L^1(\gamma)$ for all $n$. Now take the limit of (\ref{integral_proof}) as $n \rightarrow \infty$ and apply the dominated convergence theorem to find that
+
+\begin{equation}
+\lim_{n\rightarrow \infty} (\mathbb{1}+\frac{1}{n}A)^n = e^A
+\end{equation}
+\hfill $\square$
+
+\subsection{Markov Path Formulation}
+Using Bra-Ket notation, we can represent states in the two particle system as $\ket{11}, \ket{12}, \ket{22},$ and $\ket{21}$. We also define the Markov matrix
+
+\begin{align} M &= \mathbb{1} + \tau W \\
+ &= \begin{pmatrix} 1 - (\alpha + \beta)\tau && (\beta + \gamma)\tau &&  0 && \alpha \tau \\
+\beta \tau && 1- (\alpha + \beta + \gamma) \tau && \alpha \tau  && 0 \\ 0 && \alpha \tau  && 1 - (\alpha + \beta + \gamma)\tau && (\beta +\gamma) \tau \\ \alpha \tau && 0 && \beta \tau && 1-(\alpha+ \beta + \gamma)\tau
+\end{pmatrix}.\end{align}
+
+Then the probability of any path of length $N$, $\{ n_i \}_{i=1}^N$, can be written as
+\begin{equation}
+\mathbb{P}\left(\{ n_i \}\right) = \bra{n_0} M \ket{n_1}\bra{n_1}M\ket{n_2}
+\bra{n_2}\ldots M\ket{n_N}
+\end{equation}
+
+Consider now a path of length two. Suppose that in this path, particle $A$ begins in state $1$ and stays there in the second step. For example,
+
+$$ \ket{11} \rightarrow \ket{12}$$
+
+would be such a path.Considering all such paths and summing over the nuissance paths of $B$, we find that
+
+\begin{align}
+  \mathbb{P}\left(\ket{1} \rightarrow \ket{1}\right) &= \frac{1}{\sqrt{2}}\left(\bra{11}+\bra{12}\right)M\frac{1}{\sqrt{2}}\left(\ket{11}+\ket{12}\right)\\
+  &=\frac{1}{2}\left( \bra{11}M\ket{11}+ \bra{11}M\ket{12} + \bra{12}M\ket{11} + \bra{12}M\ket{12}\right )\\
+  &= \frac{1}{2}(M_{11} + M_{12} + M_{21} + M_{22} )\\
+  &= \frac{1}{2}-(\alpha+\beta)\frac{\tau}{2}+\beta\frac{\tau}{2}+(\beta +\gamma)\frac{\tau}{2} + \frac{1}{2} - (\alpha + \beta + \gamma)\frac{\tau}{2} = 1-\alpha \tau.
+\end{align}
+
+On the other hand, the probability of particle $A$ starting in state $1$ and moving to state $2$ in the second step is
+
+\begin{align}
+  \mathbb{P}\left(\ket{1} \rightarrow \ket{2}\right) &= \frac{1}{\sqrt{2}}\left(\bra{11} + \bra{12}\right) M \frac{1}{\sqrt{2}}\left(\ket{21}+\ket{22}\right) \\
+  &= \frac{1}{2}\left(\bra{11}M\ket{21} + \bra{11}M\ket{22} + \bra{12}M\ket{21} + \bra{12}M\ket{22}\right) \\
+  &= \frac{1}{2}\left(M_{14} + M_{13} + M_{24} + M_{23}) \\
+  &= \alpha\tau/2 + 0 + 0 +\alpha\tau/2 = \alpha\tau.
+\end{align}
+
+From the block diagonal structure of $M$ we can surmise that also
+
+\begin{equation}
+  \mathbb{P}\left(\ket{2} \rightarrow \ket{1}\right) = \alpha \tau
+\end{equation}
+
+and
+
+\begin{equation}
+  \mathbb{P}\left(\ket{2} \rightarrow \ket{2}\right) = 1- \alpha \tau.
+\end{equation}
+
+In other words, for an $N$ step path summing over the nuissance paths of $B$ yieds
+
+\begin{equation}
+  \mathbb{P}(\text{path of particle A}) = (1-\alpha\tau)^{N-l}(\alpha\tau)^l \rightarrow e^{-\alpha t}(\alpha \tau)^l,
+\end{equation}
+
+where $l$ is the number of jumps made by particle $A$ as before. Here we have recovered the behaviour of the single particle system by summing over the nuissance paths of $B$ in the two particle system.
+
+Consider a path, as in equation (\ref{two_particle_path}), restricted by the end points $A(0) = A(t) = 1$. That is, a path of the form
+
+\begin{equation}\label{}
+  \mathcal{P} = \left \{ (p_{t_1}, 1, b_{t_1}), (p_{t_2}, a_{t_2}, b_{t_2}), \ldots, (p_{t_n}, 1, b_{t_n}) \right \}.
+\end{equation}
+
+In the Markov path formulation, the probability of this path can be written
+
+\begin{equation}
+\mathbb{P}(\mathcal{P}) =   \bra{1B_1}M\ket{A_2B_2}\bra{A_2B_2}M\ldots M\ket{1B_n}.
+\end{equation}
+
+We may then sum over the nuissance paths of paritcle $B$ to find the probability of the path taken by particle $A$, denoted by $\mathcal{P}_A$ in the sequel.
+
+\begin{equation}
+  \mathbb{P}(\mathcal{P}_A) = \left(\bra{11}+\bra{12}\right) M \left(\ket{A_21}\bra{A_21}+\ket{A_22}\bra{A_22}\right)M \ldots M \left(\ket{11}+\ket{12}\right).
+\end{equation}
+Focussing on the quantity $M\left(\ket{A_21}\bra{A_21}+\ket{A_22}\bra{A_22}\right)$, we note that if $A_2 = 1$, then
+
+\begin{align}
+  \ket{A_21}\bra{A_21}+\ket{A_22}\bra{A_22}\r &= \ket{11}\bra{11}+\ket{12}\bra{12} \\
+  &= \begin{pmatrix} 1 && && && \\ && 0 && && \\ && && 0 && \\ && && && 0
+  \end{pmatrix} + \begin{pmatrix} 0 && && && \\ && 1 && && \\ && && 0 && \\ && && && 0
+  \end{pmatrix} \\
+  &= \begin{pmatrix} 1 && && && \\ && 1 && && \\ && && 0 && \\ && && && 0
+  \end{pmatrix},
+\end{align}
+
+and likewise
+\begin{equation}
+  \ket{21}\bra{21}+\ket{22}\bra{22} =  \begin{pmatrix} 0 && && && \\ && 0 && && \\ && && 1 && \\ && && && 1
+  \end{pmatrix}.
+\end{equation}
+
+We then write $M$ in block form
+
+\begin{equation}
+  M = \begin{pmatrix} M_1 && M_2 \\ M_3 && M_4 \end{pmatrix},
+\end{equation}
+
+such that
+
+\begin{align}
+  M(\ket{11}\bra{11}+\ket{12}\bra{12}) = \begin{pmatrix} M_1 && 0 \\ M_3 && 0 \end{pmatrix}, &&  M(\ket{21}\bra{21}+\ket{22}\bra{22}) = \begin{pmatrix} 0 && M_2 \\ 0 && M_4 \end{pmatrix}
+\end{align}
+
+Suppose now that the path $\mathcal{P}$, composed of $n$ total steps, is such that particle $A$ spends $m_1$ steps in state $1$, $m_2$ steps in state $2$, then again  $m_3$ steps in state $1$ and so on until the path ends with particle $A$ in state $1$ for $m_{l+1}$ steps (such that there are $l$ transitions for particle $A$ in total). Then we can write that path probability of $\mathcal{P}_A$ as
+
+\begin{align}
+  (\bra{11}+&\bra{12})\left[M(\ket{11}\bra{11}+\ket{12}\bra{12})\right]^{m_1-1}\left[M(\ket{21}\bra{21}+\ket{22}\bra{22})\right]^{m_2}\ldots \nonumber \\
+  &\left[M(\ket{11}\bra{11}+\ket{12}\bra{12})]^{m_{l+1}-1}(\ket{11})+\ket{12}) \\
+   \label{P_A_prob}&=\left(\begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}+\begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}\right)^T\begin{pmatrix} M_1 && 0 \\ M_3 && 0 \end{pmatrix}^{m_1-1}\begin{pmatrix} 0 && M_2 \\ 0 && M_4 \end{pmatrix}^{m_2}\ldots\begin{pmatrix} M_1 && 0 \\ M_3 && 0 \end{pmatrix}^{m_{l+1}-1}\left(\begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}+\begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}\right)
+\end{align}
+
+Now, some simple algebra allows us to write
+
+\begin{align}
+  \begin{pmatrix} M_1 && 0 \\ M_3 && 0 \end{pmatrix}^{m} =   \begin{pmatrix} M_1^m && 0 \\ M_3M_1^{m-1} && 0 \end{pmatrix} ,&& \begin{pmatrix} 0 && M_2 \\ 0 && M_4 \end{pmatrix}^m = \begin{pmatrix} 0 && M_2M_4^{m-1} \\ 0 && M_4^m \end{pmatrix}
+\end{align}
+
+Hence, letting
+\begin{align}
+  \Lambda_1 &= M_1^{m_1-1}M_2M_4^{m_2-1}M_3M_1^{m_3-1}\ldots M_3M_1^{m_{l+1}-2} \\
+  \Lambda_3 &= M_3M_1^{m_1-2}M_2M_4^{m_2-1}M_3\ldots M_3M^{m_{l+1}-2},
+\end{align}
+we compute the matrix sandwitched in (\ref{P_A_prob}) to be
+
+\begin{equation}
+  \begin{pmatrix} M_1 && 0 \\ M_3 && 0 \end{pmatrix}^{m_1-1}\begin{pmatrix} 0 && M_2 \\ 0 && M_4 \end{pmatrix}^{m_2}\ldots\begin{pmatrix} M_1 && 0 \\ M_3 && 0 \end{pmatrix}^{m_{l+1}-1} = \begin{pmatrix}\Lambda_1 && 0 \\
+  \\
+  \Lambda_3 && 0
+\end{pmatrix} \label{sandwitch_1_1}
+\end{equation}
+
+We now consider the quantity $\Lambda_1$. First, note that, as $\tau \rightarrow 0$, the number of steps between any successive pair of jumps can be taken to be large, i.e. each $m_i$ is large. We also know that $M_i = \mathbb{1} + \tau W_i$, so
+
+\begin{equation}\label{limit_lambda_1}
+  \lim_{\tau \rightarrow 0}\Lambda_1 = e^{t_1W_1}M_2e^{t_2W_4}M_3e^{t_3W_1}\ldots M_3e^{t_{l+1}W_1},
+\end{equation}
+where $\sum_i t_i = t$, is the total time. We take note of the commutation relations
+
+\begin{equation}\label{commutations}
+  \left[e^{t_iW_1},M_2\right] =   \left[e^{t_iW_4},M_3\right] = \frac{e^{-t_i\alpha}(\alpha\tau)}{2\beta\gamma}\zeta\underbrace{\begin{pmatrix} -1 && -1 \\ 1 && 1 \end{pmatrix}}_{(\ast)},
+\end{equation}
+where $\zeta = (e^{-t_i(2\beta+\gamma)}-1)$. In addition, we have the equality
+\begin{equation}
+  M_2M_3 = M_3M_2 = M_2^2 = \begin{pmatrix} 0 && \alpha \tau \\
+  \alpha \tau && 0 \end{pmatrix}^2 = (\alpha \tau)^2 \mathbb{1},
+\end{equation}
+
+and since $W_1 = W_4$ we have
+\begin{equation}\label{matrix_exp_commute}
+  e^{t_iW_1}e^{t_jW_4}= e^{t_iW_1+t_jW_4 }= e^{(t_i+t_j)W_1}
+\end{equation}
+(that is to say, the matrix exponentials commute). Now, we can use (\ref{commutations})-(\ref{matrix_exp_commute}) to rewrite (\ref{limit_lambda_1}) as follows:
+
+\begin{align}
+\lim_{\tau \rightarrow 0} \Lambda_1 &=  e^{t_1W_1}M_2e^{t_2W_4}M_3e^{t_3W_1}\ldots M_3e^{t_{l+1}W_1} \nonumber\\ &= e^{t_1W_1}M_2\left(M_3e^{t_2W_4}+\frac{e^{-t_i\alpha}(\alpha\tau)}{2\beta\gamma}\zeta\begin{pmatrix} -1 && -1 \\ 1 && 1 \end{pmatrix}\right)M_3e^{t_3W_1}M_2 \ldots M_3e^{t_{l+1}W_1} \\
+&= \left(e^{t_1W_1}M_2M_3e^{t_2W_4}+\frac{e^{-t_2\alpha}(\alpha\tau)}{2\beta\gamma}\zeta e^{t_1W_1}M_2\begin{pmatrix} -1 && -1 \\ 1 && 1 \end{pmatrix}\right) \nonumber \\
+&\left(e^{t_3W_1}M_2M_3e^{t_4W_4}+\frac{e^{-t_4\alpha}(\alpha\tau)}{2\beta\gamma}\zeta e^{t_3W_1}M_2\begin{pmatrix} -1 && -1 \\ 1 && 1 \end{pmatrix}\right) \nonumber \\
+&\vdots \nonumber \\
+&\left(e^{t_{l-1}W_1}M_2M_3e^{t_lW_4}+\frac{e^{-t_{l}\alpha}(\alpha\tau)}{2\beta\gamma}\zeta e^{t_{l-1}W_1}M_2\begin{pmatrix} -1 && -1 \\ 1 && 1 \end{pmatrix}\right)e^{t_{l+1}W_1}
+\end{align}
+
+The right hand side in the above can be further simplified to give
+
+\begin{align}\label{lambda_1_factor}
+  \lim_{\tau \rightarrow 0} \Lambda_1 &= \left((\alpha\tau)^2e^{t_1W_1}e^{t_2W_4}+\frac{e^{-t_2\alpha}(\alpha\tau)}{2\beta\gamma}\zeta e^{t_1W_1}M_2\begin{pmatrix} -1 && -1 \\ 1 && 1 \end{pmatrix}\right) \nonumber \\
+  &\left((\alpha\tau)^2e^{t_3W_1}e^{t_4W_4}+\frac{e^{-t_4\alpha}(\alpha\tau)}{2\beta\gamma}\zeta e^{t_3W_1}M_2\begin{pmatrix} -1 && -1 \\ 1 && 1 \end{pmatrix}\right) \nonumber \\
+  &\vdots \nonumber \\
+  &\left((\alpha\tau)^2e^{t_{l-1}W_1}e^{t_lW_4}+\frac{e^{-t_{l}\alpha}(\alpha\tau)}{2\beta\gamma}\zeta e^{t_{l-1}W_1}M_2\begin{pmatrix} -1 && -1 \\ 1 && 1 \end{pmatrix}\right)e^{t_{l+1}W_1}
+\end{align}
+Terms in the expansion of the above that contain two instances of $(\ast)$ are in general of the form
+
+\begin{align}\label{two_instances}
+  \frac{(\alpha \tau)^l}{(2\beta\gamma)^2}&\zeta^2e^{-\alpha t_i}e^{-\alpha t_j}\nonumber \\ &\exp{W_1\sum_{k < j}t_k}M_2\begin{pmatrix} -1 && -1 \\ 1 && 1 \end{pmatrix}\exp{W_1\sum_{j < p < i}t_p}M_2\begin{pmatrix} -1 && -1 \\ 1 && 1 \end{pmatrix}\exp{W_1\sum_{q>i}t_q}.
+\end{align}
+
+Then, using that
+\begin{equation}
+  e^ {t_i W_1}M_2\begin{pmatrix} -1 && -1 \\ 1 && 1 \end{pmatrix}e^{t_jW_1} = \alpha\tau e^{-\alpha t_j - (\alpha +2\beta+\gamma )t_i}\begin{pmatrix} 1 && 1 \\ -1 && -1 \end{pmatrix}
+\end{equation}
+
+we find that (\ref{two_instances}) evaluates to zero. Similarly we may show that any terms in the expansion that include more than two instances of the matrix $(\ast)$ also evaluate to zero. Finally, we are left with the follwing simple expression for the limit of $\Lambda_1$ for small $\tau$.
+
+\begin{equation}\label{small_tau_lim_1_1}
+  \lim_{\tau \rightarrow 0} \Lambda_1 = (\alpha \tau)^l e^{tW_1} + \frac{(\alpha\tau)^l\zeta}{2\beta\gamma}\sum_{i=2}^{l} e^{-\alpha t_i} \exp{W_1 \sum_{j<i}t_j}\begin{pmatrix} 1 && 1 \\ -1 && -1 \end{pmatrix} \exp{W_1\sum_{j>i}t_j}
+\end{equation}
+
+In general if we have a $4\times 4$ matrix in block form given by
+
+$$A= \begin{pmatrix} A_1 && A_2 \\ A_3 && A_4 \end {pmatrix},$$
+
+then we will have
+
+$$ \begin{pmatrix} 1 \\ 1 \\ 0 \\ 0 \end{pmatrix}^T A \begin{pmatrix} 1 \\ 1 \\ 0 \\ 0 \end{pmatrix} = \sum_{a_{ij} \in A_1}a_{ij}.$$
+
+In other words, the result of the inner product given in (\ref{P_A_prob}) depends only on $\Lambda_1$, so we need not evaluate $\Lambda_3$. Moreover, the second term on the RHS of (\ref{small_tau_lim_1_1}) does not contribute to the inner product in (\ref{P_A_prob}) since
+
+\begin{equation}
+  \exp{W_1\sum_{j<i}t_j}\begin{pmatrix} 1 && 1 \\ -1 && -1 \end{pmatrix}\exp{W_1 \sum_{j>i}t_j} =
+  \exp{-\alpha\sum_{j>i}t_j - (\alpha+2\beta+\gamma)\sum_{j<i}t_j}\begin{pmatrix} 1 && 1 \\ -1 && -1 \end{pmatrix}
+\end{equation}
+
+and furthermore
+
+\begin{equation}
+  \begin{pmatrix} 1 \\ 1 \\ 0 \\ 0 \end{pmatrix}^T \begin{pmatrix} 1 && 1 && 0 && 0 \\ -1 && -1 && 0 && 0 \\ 0 && 0 && 0 && 0 \\ 0 && 0 && 0 && 0\end{pmatrix} \begin{pmatrix} 1 \\ 1 \\ 0 \\ 0 \end{pmatrix} = 0.
+\end{equation}
+
+So, we can evaluate (\ref{P_A_prob}) in the limit of small $\tau$ to be
+
+\begin{align}
+  \mathbb{P}(\mathcal{P}_A) &=\begin{pmatrix} 1 \\ 1 \\ 0 \\ 0 \end{pmatrix}^T\begin{pmatrix} M_1 && 0 \\ M_3 && 0 \end{pmatrix}^{m_1-1}\begin{pmatrix} 0 && M_2 \\ 0 && M_4 \end{pmatrix}^{m_2}\ldots\begin{pmatrix} M_1 && 0 \\ M_3 && 0 \end{pmatrix}^{m_{l+1}-1} \\
+&\xrightarrow{\tau \rightarrow 0} \begin{pmatrix} 1 \\ 1 \\ 0 \\ 0 \end{pmatrix}^T \begin{pmatrix} (\alpha\tau)^le^{tW_1} && 0 \\ \Lambda_3 && 0 \end{pmatrix}\begin{pmatrix} 1 \\ 1 \\ 0 \\ 0 \end{pmatrix} = 2e^{-\alpha t}(\alpha\tau)^l.
+\end{align}
+
+Hence, we have recovered the behaviour of the single particle system.
+\newpage
+\subsection{The Coupled Two Particle System}
+Now we seek to find the path probability of particle B by summing over the nuissance paths of particle A. This turns out to be extremely difficult to do exactly, and to proceed analytically we have to make the two assumptions that $\gamma/\alpha << 1$ and $\gamma/\beta << 1$. We will also need the following lemma.
+
+
+\begin{lemma}\label{exp_of_2x2}
+  If $X$ is a traceless, $2 \times 2$ matrix, then
+
+  $$ e^X = \cos \sqrt{\det X}\,\mathbb{1} + \frac{\sin \sqrt{\det X}}{\sqrt{\det X}}X.$$
+\end{lemma}
+\textit{Proof:}
+  See \textit{'Lie Groups: An Introduction Through Linear Groups'} by W. Rossmann, Chapter 1.2, Example 9. \hfill $\square$
+
+\vspace{10pt}
+We now re-number our basis of states so that the algebra of the problem can be simplified into one involving block matricies. Throughout this subsection we will have the basis ordering
+
+\begin{align}
+  \ket{11} = e_1, \; \nonumber
+  \ket{21} = e_2, \;  \nonumber
+  \ket{12} = e_3, \;  \nonumber
+  \ket{22} = e_4.
+\end{align}
+This leads to the updated transition matrix $\Omega$ given by
+
+\begin{equation}
+  \Omega = \begin{pmatrix} -\alpha - \beta && \alpha && \beta + \gamma && 0 \\
+  \alpha && -\alpha -\beta -\gamma && 0 && \beta \\
+  \beta && 0 && -\alpha-\beta-\gamma && \alpha \\
+  0 && \beta+\gamma && \alpha && -\alpha-\beta \end{pmatrix}.
+\end{equation}
+
+Let us also define $\Psi = \mathbb{1} + \tau\Omega$, the object analogous to the matrix $M$ in the previous section. Then, given a path $\mathcal{P}$ and corresponding B-path $\mathcal{P}_B$ we can write
+
+\begin{gather} \label{path_prob_B}
+  \mathbb{P}(\mathcal{P}_B) = \frac{1}{\sqrt{2}}\left(\bra{1B(\tau)}+\bra{2B(\tau)}\right)\Psi\left(\ket{1B(2\tau)}\bra{1B(2\tau)}+\ket{2B(2\tau)}\bra{2B(2\tau)}\right)\ldots \\ \nonumber \Psi \left(\ket{1B((n-1)\tau)}\bra{1B((n-1)\tau)}+\ket{2B((n-1)\tau)}\bra{2B((n-1)\tau)}\right)  \Psi \frac{1}{\sqrt{2}}\left(\ket{1B(n\tau)}+\ket{2B(n\tau)}\right).
+\end{gather}
+
+Notice that due to the change of basis ordering, the algebra resembles that in the previous section, in the sense that
+
+\begin{align}
+  \Psi(\ket{11}\bra{11} + \ket{21}\bra{21}) &= \begin{pmatrix} \Psi_1 && 0 \\
+  \Psi_3 && 0 \end{pmatrix} \; \; \text{(particle B in state 1)} \\
+  &\text{and} \nonumber \\
+  \Psi(\ket{12}\bra{12} + \ket{22}\bra{22}) &= \begin{pmatrix} 0 && \Psi_2 \\
+  0 && \Psi_4 \end{pmatrix} \; \; \text{(particle B in state 2)}.
+\end{align}
+
+Let us now assume that $\mathcal{P}_B$ begins and ends with particle B in state 1. Then proceeding as before to evaluate the sandwitched matrix in (\ref{path_prob_B}), we find that
+
+\begin{equation}\label{inner_prod_B}
+  \mathbb{P}(\mathcal{P}_B) = \frac{1}{2}(\bra{11}+\bra{21})\begin{pmatrix} \psi_1 && 0 \\ \psi_3 && 0 \end{pmatrix} (\ket{11} + \ket{21}),
+\end{equation}
+
+where
+
+
+\begin{align}
+\psi_1 &= \Psi_1^{m_1-1}\Psi_2\Psi_4^{m_2-1}\Psi_3\Psi_1^{m_3-1}\ldots \Psi_3\Psi_1^{m_{l+1} -2}, \\
+\psi_3 &= \Psi_3\Psi_1^{m_1-2}\Psi_2\Psi_4^{m_2-1}\Psi_3\Psi_1^{m_3-1}\ldots \Psi_3\Psi_1^{m_{l+1} -2} .
+\end{align}
+
+As before, we are only concerned with evaluating $\psi_1$ as $\tau$ goes to zero.
+
+\begin{equation}\label{lim_psi1}
+  \lim_{\tau \rightarrow 0} \psi_1 = e^{t_1\Omega_1}\Psi_2 e^{t_2\Omega_4}\Psi_3\ldots\Psi_3
+  e^{t_{l+1}\Omega_1}
+\end{equation}
+
+We now note the commutator relation:
+\begin{align}
+  e^{t_i\Omega_4}\Psi_3 &= \Psi_3e^{t_i\Omega_4} + [e^{t_i\Omega_4},\Psi_3] \nonumber \\
+  &= \Psi_3e^{t_i\Omega_4} + (\alpha\gamma\tau)\frac{2\sinh\left(\frac{t_i}{2}\sqrt{4\alpha^2+\gamma^2}\right)}{\sqrt{4\alpha^2+\gamma^2}} \begin{pmatrix} 0 && 1 \\ -1 && 0 \end{pmatrix} \nonumber \\
+  &= \Psi_3e^{t_i\Omega_4} + \gamma\tau\sinh(\alpha t_i)  \begin{pmatrix} 0 && 1 \\ -1 && 0 \end{pmatrix} + \mathcal{O}(\gamma^2/\alpha^2),
+\end{align} \todo{I don't think this is technically correct, the approximation works, but only if we also assume $\alpha t_i \approx 1$, which should be true for physical systems}
+
+So (\ref{lim_psi1}) can be rewritten
+
+\begin{align}
+  \lim_{\tau \rightarrow 0} \psi_1 &= \left(\prod_{i=1}^{l/2}\left(e^{t_{2i-1}\Omega_1}\Psi_2\Psi_3
+    e^{t_{2i}\Omega_4} + \gamma\tau \sinh(at_{2i}) e^{t_{2i-1}\Omega_1}\Psi_2\begin{pmatrix} 0 && 1 \\ -1 && 0 \end{pmatrix} \right)\right)e^{t_{l+1}\Omega_1} \nonumber\\
+    &=  \left(\prod_{i=1}^{l/2}\left(\beta(\beta+\gamma/2)\tau^2e^{t_{2i-1}\Omega_1}e^{t_{2i}\Omega_4} + \gamma\tau \sinh(at_{2i})e^{t_{2i-1}\Omega_1}\Psi_2 \begin{pmatrix} 0 && 1 \\ -1 && 0 \end{pmatrix} \right)\right)e^{t_{l+1}\Omega_1}
+\end{align}
+
+If we were to expand the product above, every term would have a scalar coefficient proportional to
+
+\begin{equation}
+  \beta^{l/2 - k}(\beta+\gamma/2)^{l/2-k}\gamma^k = \mathcal{O}(\gamma^k/\beta^k),  \; \; k = 0,1,\ldots,l/2.
+\end{equation}
+
+Hence we can ignore the terms in the expansion where $k \geq 2$.
+
+In fact, we find that \todo{there's about 23 steps missing here}
+
+\begin{align}\label{sandwiched_to_gamma2}
+\lim_{\tau \rightarrow 0} \psi_1 = \beta^{l/2}(\beta+\gamma)^{l/2}\tau^l e^{t_1\Omega_1}e^{t_2\Omega_2}e^{t_3\Omega_4}\ldots e^{t_l\Omega_4}e^{t_{l+1}\Omega_1} + \text{nasty term} + \mathcal{O}(\gamma^2/\beta^2).
+\end{align}
+
+Notice also that
+
+\begin{equation}
+  \Omega_1 = \begin{pmatrix} \gamma/2 && \alpha \\ \alpha && -\gamma/2 \end{pmatrix}
+  - (\alpha +\beta +\gamma/2)\mathbb{1}, \; \; \text{and} \; \;
+    \Omega_4 = \begin{pmatrix} -\gamma/2 && \alpha \\ \alpha && \gamma/2 \end{pmatrix} -
+    (\alpha +\beta +\gamma/2)\mathbb{1},
+\end{equation}
+
+where in each case the first term on the RHS is traceless. Using the above and lemma \ref{exp_of_2x2} we write
+\begin{align}
+  e^{t_i\Omega_1} &=  \exp{ t_i\left[ \begin{pmatrix} \gamma/2 && \alpha \\ \alpha && -\gamma/2 \end{pmatrix}
+  - (\alpha +\beta +\gamma/2)\mathbb{1}\right]} \nonumber\\
+  &= e^{-(\alpha +\beta+\gamma/2)t_i}\exp{t_i \begin{pmatrix} \gamma/2 && \alpha \\ \alpha && -\gamma/2 \end{pmatrix}} \nonumber\\
+  &= e^{-(\alpha +\beta+\gamma/2)t_i}\left [\cosh {\left(\frac{t_i}{2}\sqrt{\gamma^2 +4\alpha^2}\right)}\,\mathbb{1}
+  + \frac{2\sinh{\left(\frac{t_i}{2}\sqrt{\gamma^2+4\alpha^2}\right)}}{\sqrt{\gamma^2+4\alpha^2}}\begin{pmatrix} \gamma/2 && \alpha \\ \alpha && -\gamma/2 \end{pmatrix} \right] \nonumber \\
+  &= e^{-(\alpha +\beta+\gamma/2)t_i} \left[\cosh {(\alpha t_i)}\,\mathbb{1}
+  + \sinh(\alpha t_i)\begin{pmatrix} \gamma/2\alpha && 1 \\ 1 && -\gamma/2\alpha \end{pmatrix} \right] + \mathcal{O}(\gamma^2/\alpha^2)
+  ,
+\end{align}
+
+and likewise
+
+\begin{equation}
+  e^{t_i\Omega_4} = e^{-(\alpha +\beta+\gamma/2)t_i}\left [\cosh {(\alpha t_i)}\,\mathbb{1}
+  + \sinh(\alpha t_i)\begin{pmatrix}    -\gamma/2\alpha && 1 \\ 1 && \gamma/2\alpha \end{pmatrix} \right] + \mathcal{O}(\gamma^2/\alpha^2).
+\end{equation}
+
+
+
+Take now the following basis of $sl(2)$
+
+\begin{equation}
+  H = \begin{pmatrix}1 && 0 \\ 0 && -1 \end{pmatrix}, \; \; X_+ = \begin{pmatrix}0 && 1 \\ 1 && 0 \end{pmatrix}, \;\; X_- = \begin{pmatrix}0 && -1 \\ 1 && 0 \end{pmatrix},
+\end{equation}
+
+and further define the two families of indexed operators given by
+
+\begin{equation}
+  a_m = \left(\frac{m\gamma}{2\alpha}H + X_+ \right), \; \;
+  b_m = \left(\mathbb{1} + \frac{m\gamma}{2\alpha}X_-\right), \; \; m\in \bZ
+\end{equation}
+
+Notice that
+
+$$\begin{pmatrix} \gamma/2\alpha && 1 \\ 1 && -\gamma/2\alpha \end{pmatrix} = a_1, \; \; \text{and} \; \;  \begin{pmatrix}    -\gamma/2\alpha && 1 \\ 1 && \gamma/2\alpha \end{pmatrix} = a_{-1}.$$
+
+Furthemore, up to $\mathcal{O}(\gamma^2/\alpha^2)$, the following operator algebra holds
+
+\begin{align}
+  a_ma_n &= b_{n-m} \\
+  a_mb_n &= a_{m+n} \\
+  b_na_m &= a_{m-n} \\
+  b_nb_m &= b_{m+n}
+\end{align}
+
+
+
+
+\newpage dd \newpage dd \newpage
+
+In particular, we find that, $e^{t_i\Omega_1}= e^{t_i\Omega_4} + \frac{\gamma \sinh{(\alpha t_i)}}{\alpha}e^{-(\alpha +\beta +\gamma/2)t_i}\mathbb{1} + \mathcal{O}(\gamma^2/\alpha^2)$. Using this result we re-write the RHS of (\ref{sandwiched_to_gamma2}) as below.
+The first term on the RHS can be re-written as
+\begin{align}
+  \beta^{l/2}(\beta+\gamma)^{l/2}\tau^l e^{t_1\Omega_1}&e^{t_2\Omega_2}e^{t_3\Omega_4}\ldots e^{t_l\Omega_4}e^{t_{l+1}\Omega_1} \nonumber \\ &=  \beta^{l/2}(\beta+\gamma)^{l/2}\tau^l(e^{t_1\Omega_4}+ \frac{\gamma \sinh{(\alpha t_1)}}{\alpha}e^{-(\alpha +\beta +\gamma/2)t_1}\mathbb{1})e^{t_2\Omega_4}(e^{t_3\Omega_4}+ \frac{\gamma \sinh{(\alpha t_3)}}{\alpha}e^{-(\alpha +\beta +\gamma/2)t_3}\mathbb{1}) \nonumber \\
+  &\ldots e^{t_l\Omega_4}(e^{t_{l+1}\Omega_4}+ \frac{\gamma \sinh{(\alpha t_{l+1})}}{\alpha}e^{-(\alpha +\beta +\gamma/2)t_{l+1}}\mathbb{1}) + \mathcal{O}(\gamma^2/\alpha^2) \nonumber \\
+  &= \beta^{l/2}(\beta+\gamma)^{l/2}\tau^l \left(e^{t\Omega_4} + \frac{\gamma}{\alpha} \sum_{i=0}^{l/2}\sinh{(\alpha t_{2i+1})}e^{-(\alpha +\beta +\gamma/2)t_{2i+1}}e^{(t-t_{2i+1})\Omega_4}\right) + \mathcal{O}(\gamma^2/\alpha^2),
+\end{align}
+\newpage
+and for the second term we have \todo{recall $\eta_i \approx \sinh(\alpha t_i)/\alpha$}
+
+\begin{align}
+  \label{nastyterm}
+  &\beta^{l/2}(\beta+\gamma)^{l/2-1}(\gamma/\beta)\tau^l  \nonumber \\ &\sum_{k=1}^{l/2}\left [ \left(\prod_{1 \leq i < k}e^{t_{2i-1}\Omega_1}e^{t_{2i}\Omega_4}\right)\left(\sinh(\alpha t_{2k})e^{t_{2k-1}\Omega_1}\Psi_2\begin{pmatrix} 0 && 1 \\ -1 && 0\end{pmatrix}\right)\left(\prod_{k \leq i \leq l/2}e^{t_{2i-1}\Omega_1}e^{t_{2i}\Omega_4}\right) \right] \nonumber \\
+  &= \beta^{l/2}(\beta+\gamma)^{l/2-1}(\gamma/\beta) \tau^l  \nonumber \\ &\sum_{k=1}^{l/2}\left [ \left(\prod_{1 \leq i < k}(e^{t_{2i-1}\Omega_4} + \mathcal{O}(\gamma/\alpha))e^{t_{2i}\Omega_4}\right)\left(\sinh(\alpha t_{2k}) (e^{t_{2k-1}\Omega_4}+\mathcal {O}(\gamma/\alpha))\Psi_2\begin{pmatrix} 0 && 1 \\ -1 && 0\end{pmatrix}\right)\left(\prod_{k \leq i \leq l/2}(e^{t_{2i-1}\Omega_4} + \mathcal{O}(\gamma/\alpha))e^{t_{2i}\Omega_4}\right) \right] \nonumber \\
+  &= \beta^{l/2}(\beta+\gamma)^{l/2-1}(\gamma/\beta)\tau^l \nonumber \\
+  &\sum_{k=1}^{l/2} \left(\exp{\Omega_4 \sum_{1\leq i < 2(k-1)}t_i}+\mathcal{O}(\gamma/\alpha)\right)\left(\sinh(\alpha t_{2k}) (e^{t_{2k-1}\Omega_4}+\mathcal{O}(\gamma/\alpha))\Psi_2\begin{pmatrix} 0 && 1 \\ -1 && 0\end{pmatrix} \right)\left(\exp{\Omega_4 \sum_{2k < i \leq l+1}t_i} + \mathcal{O}(\gamma/\alpha)\right) \nonumber \\
+  &= \beta^{l/2}(\beta+\gamma)^{l/2-1}(\gamma/\beta)\tau^l \nonumber \\
+  &\sum_{k=1}^{l/2} \left[\exp{\Omega_4\sum_{1\leq i \leq 2k-1}t_i}\sinh(\alpha t_{2k}) \Psi_2\begin{pmatrix} 0 && 1 \\ -1 && 0 \end{pmatrix} \exp{\Omega_4\sum_{2k+1 \leq i \leq l } t_i}\right] + \mathcal{O}(\gamma^2/\alpha\beta, \gamma^2/\alpha^2).
+\end{align}
+
+We now (carefully) pass (\ref{nastyterm}) into the inner product (\ref{inner_prod_B}). After some lengthy arithmetic we find that this gives contributions that are at most $\mathcal{O}(\gamma/\alpha\beta, \gamma/\beta^2)$. Hence the second term in (\ref{sandwiched_to_gamma2}) does not contribute to the inner product (\ref{inner_prod_B}) up to order $\mathcal{O}(\gamma/\alpha\beta, \gamma/\beta^2)$. We can now evaluate (\ref{inner_prod_B}) up to order $\mathcal{O}(\gamma/\alpha\beta, \gamma/\beta^2, \gamma/\alpha^2)$ by calclating the inner product $\begin{pmatrix} 1 \\ 1 \end{pmatrix}^T(93)\begin{pmatrix} 1 \\ 1 \end{pmatrix}$, which gives
+
+\begin{align}
+\mathbb{P}(\mathcal{P_B}) &= \frac{1}{2}(\bra{11}+\bra{21})\begin{pmatrix} \psi_1 && 0 \\ \psi_3 && 0 \end{pmatrix} (\ket{11} + \ket{21}) \nonumber \\
+&= \beta^{l}(1+\gamma/\beta)^{l/2} e^{-(\beta+\gamma/2)t}\tau^l \left (1 + \frac{\gamma}{2\alpha}\left(\frac{l}{2} - \sum_{k=0}^{l/2}e^{-2\alpha t_{2k+1}}\right)\right)
+\end{align}
+
+
+Next step is to calculate $\int dt^l \mathbb{P}(\mathcal{P}_B)$.
+
+\end{document}

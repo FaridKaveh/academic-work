@@ -1,0 +1,14 @@
+# Fdb version 3
+["pdflatex"] 1640212847 "title.tex" "title.pdf" "title" 1640212848
+  "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
+  "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm" 1136768653 1300 63a6111ee6274895728663cf4b4e7e81 ""
+  "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1136768653 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
+  "/usr/local/texlive/2020/texmf-dist/web2c/texmf.cnf" 1598393674 39451 15a3ebee027466ecb89701aa91dfebaf ""
+  "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1605415057 2549309 f5e92266b9870971f43be316b1597fdd ""
+  "/usr/local/texlive/2020/texmf.cnf" 1605415023 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
+  "title.aux" 1640209623 8 a94a2480d3289e625eea47cd1b285758 ""
+  "title.tex" 1640212847 2487 25a5df7e83a9a09a1542ec47a0624dcf ""
+  (generated)
+  "title.pdf"
+  "title.log"

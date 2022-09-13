@@ -1,0 +1,11 @@
+PWD /home/farid/Documents/path_prob_ent_prod/the_waiting_room
+INPUT /usr/local/texlive/2020/texmf.cnf
+INPUT /usr/local/texlive/2020/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT waiting_room.tex
+OUTPUT waiting_room.log
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+OUTPUT waiting_room.pdf
+INPUT /usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map

@@ -1,0 +1,14 @@
+# Fdb version 3
+["pdflatex"] 1656584176 "two_state_system.tex" "two_state_system.pdf" "two_state_system" 1656584177
+  "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
+  "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1136768653 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
+  "/usr/local/texlive/2020/texmf-dist/web2c/texmf.cnf" 1598393674 39451 15a3ebee027466ecb89701aa91dfebaf ""
+  "/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1605415027 5012519 ddf1dc71edcd942ba0165889eb364fcd ""
+  "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1605415057 2549309 f5e92266b9870971f43be316b1597fdd ""
+  "/usr/local/texlive/2020/texmf.cnf" 1605415023 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
+  "two_state_system.aux" 1640218019 141 7c5aec393e90ee6ca0cb9899cb2be16c ""
+  "two_state_system.tex" 1656584176 12239 9ac4cd103d4520a4da3a5985242efad6 ""
+  (generated)
+  "two_state_system.pdf"
+  "two_state_system.log"

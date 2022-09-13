@@ -1,0 +1,268 @@
+\section*{Appendices}
+
+\addcontentsline{toc}{section}{Appendices}
+\renewcommand{\thesection}{\Alph{subsection}}
+\setcounter{subsection}{0}
+\subsection{Required Definitions, Theorems, and Lemmas}
+
+We first give the following definition of a matrix function from \cite{higham2008functions}.
+\label{appendix:lemmas}
+\begin{definition}[Matrix function via Cauchy integral]
+For $A \in \bC^{n\times n}$, 
+
+\begin{align}
+f(A) \coloneqq \frac{1}{2\pi i}\oint_\gamma f(z)(z\mathds{1} - A)^{-1} \, \rmd z, 
+\end{align}
+
+where $f$ is analytic on and inside a closed contour $\gamma$ that encloses the spectrum of $A$. 
+\end{definition}
+
+In the above, the integral is taken element-by-element. 
+
+\begin{theorem}[Dominated Convergence Theorem]
+Let $(\mathcal{X}, \mathcal{F}, \mu)$ be a measure space. If the sequence of functions $\{f_n\}$ converges pointwise to $f$ on $\mathcal{X}$ and furthermore there exists $\phi \in L^1(\mu)$ such that $\abs{f_n(x)} \leq \abs{\phi(x)}$ for all $x \in \mathcal{X}$ and for all $n$, then 
+
+\begin{align}
+\lim_{n\rightarrow \infty} \int_{\mathcal{X}} f_n \,\rmd \mu = \int_{\mathcal{X}} f \,\rmd \mu
+\end{align}
+\end{theorem}
+\begin{proof}
+See \cite[\S 44]{kolmogorov2012elements} or any introductory functional analysis textbook.
+\end{proof}
+\begin{corollary}\label{limit-of-mat}
+Let $A \in \bC^{m\times m}$. Then $\lim_{n\rightarrow \infty}(\mathds{1}+\frac{1}{n}A)^n = e^A$.
+\end{corollary}
+\begin{proof}
+Define $f_n(z) = (1 + z/n)^n$. Note that
+\begin{equation}
+  \abs{(1+\frac{z}{n})^n} \leq (1 + \abs{\frac{z}{n}})^n
+\end{equation}
+
+so for a contour $\gamma$ such that $\sup_{z \in \gamma} \abs{z} = M$, we have the inequality
+
+\begin{equation}
+  \abs{(1+\frac{z}{n})^n} \leq (1 + \frac{\abs{M}}{n})^n \uparrow e^M
+\end{equation}
+
+Now take $\gamma$ to be a simple, closed, positively oriented contour that encloses the spectrum of $A$. Then
+
+\begin{equation}\label{integral_proof}
+  (\mathds{1}+\frac{1}{n}A)^n = \frac{1}{2\pi i}\oint_\gamma f_n(\zeta)(\zeta \mathds{1} - A)^{-1}\: d\zeta.
+\end{equation}
+But $f_n(z) \rightarrow e^z$ pointwise and there exists $M \in \bR$ such that $|f_n| \leq e^M \in L^1(\gamma)$ for all $n$. Now take the limit of (\ref{integral_proof}) as $n \rightarrow \infty$ and apply the dominated convergence theorem to find that
+
+\begin{equation}
+\lim_{n\rightarrow \infty} (\mathds{1}+\frac{1}{n}A)^n = e^A
+\end{equation}
+\end{proof}
+
+\begin{proposition}\label{mat-exp-lemma}
+If $X$ is a traceless, $2 \times 2$ matrix, then
+
+  $$ e^X = \cos \sqrt{\det X}\,\mathds{1} + \frac{\sin \sqrt{\det X}}{\sqrt{\det X}}X.$$
+\end{proposition}
+\begin{proof}
+See \cite[\S 1.2]{WulfLiegroups}.
+\end{proof}
+
+\begin{proposition}\label{recursion-lemma}
+  For $n = 0, 1 ,2 \ldots$, Let $I_n(t,r)$ be the integral
+
+  \begin{equation}
+    I_n(t,r)= \int_0^t dt_1\int_{t_1}^t dt_2\ldots \int_{t_{L-1}}^t dt_n \prod_{i \; \text{odd}}^n e^{rt_i} \prod_{i \: \text{even}}^n e^{-rt_i},
+  \end{equation}
+
+  with the convention $I_0 = 1$. Then we have the recurrence relation
+
+  \begin{equation}\label{differential_recurrence_odd_proof}
+    \dot{I}_{n+1}(t,r) = e^{-rt}  I_n(t,r); \; \; I_{n+1}(0,r) = 0
+  \end{equation}
+
+  for odd $n$ and
+
+  \begin{equation}\label{differential_recurrence_even_proof}
+    \dot{I}_{n+1}(t,r) = e^{rt}  I_n(t,r); \; \; I_{n+1}(0,r) = 0
+  \end{equation}
+
+  for even $n$.
+
+\end{proposition}
+\begin{proof}
+We will show the odd $n$ case. The case for even $n$ is analogous. The base case $n=1$ is easily checked. For the induction, Note that
+
+\begin{align}
+  I_n(t,r) &= \int_0^t e^{rt_1}dt_1\int_{t_1}^t e^{-rt_2}dt_2\ldots \int_{t_{L-1}}^t e^{rt_n}dt_n \\
+  &= \int_{[0,t]^n} \mathds{1}_{\{0 < t_1 < \ldots < t_n < t\}}e^{rt_1}e^{-rt_2}\ldots e^{rt_n} dt_n\ldots dt_1 \\
+  &= \int^t_0 e^{rt_n} dt_n \ldots \int_0^{t_3}e^{-rt_2}dt_2\int_0^{t_2}e^{rt_1}dt_1.
+\end{align}
+
+Then
+
+\begin{equation}\label{integral_recurrence}
+  I_{n+1}(t,r) = \int_0^t e^{-rs} ds \int_0^s e^{rt_n} dt_n \ldots \int_0^{t_3}e^{-rt_2}dt_2\int_0^{t_2}e^{rt_1}dt_1 = \int_0^t e^{-rs} I(s,r)ds.
+\end{equation}
+
+Differentiating (\ref{integral_recurrence}) gives the result.
+\end{proof}
+
+\begin{proposition} 
+Let $X: \Omega \rightarrow \mathcal{X}_1$ be $\mathcal{F}^\prime \subset \mathcal{F}$ measurable and let $Y: \Omega \rightarrow \mathcal{Y}$ be independent of $\mathcal{F}^\prime$. Let $\psi: \mathcal{X}\times \mathcal{Y} \rightarrow \bR$ be $\mathcal{B}(\mathcal{X}) \times \mathcal{B}(\mathcal{Y})$ measurable such that $\bE \abs{\psi(X,Y)} < \infty$. Define $h_\psi(x) \coloneqq \bE[\psi(x,Y)] = \int_\Omega \psi(x,Y(\omega)) \rmd\bP(\omega)$. Then 
+
+\begin{align}
+\bE\left[\psi(X,Y) \: \lvert \: \mathcal{F}^\prime\right] = h_\psi(X).
+\end{align}
+\end{proposition}
+
+\begin{proof}
+A proof of this theorem is given in \cite{XueMeiAltman2020}, but since this resource is not easily accessible we shall reproduce a modified version of the proof here. 
+
+Let $\tilde{\psi}(x,y) = \mathds{1}_{A}(x)\mathds{1}_{B}(y)$ for $A \in \mathcal{B}(\mathcal{X}), \,B \in \mathcal{B}(\mathcal{Y}) $. Then since $X$ is $\mathcal{F}^\prime$ measurable and $Y$ is $\mathcal{F}^\prime$ independent we have 
+
+\begin{align}
+\bE\left[\tilde{\psi}(X,Y) \: \bigg\lvert \: \mathcal{F}^\prime\right] = \mathds{1}_A(X)\bE[\mathds{1}_B(Y)] = h_{\tilde{\psi}}(X).
+\end{align}
+
+This shows that $A \times B \in \mathcal{H}$ where 
+
+\begin{align}
+\mathcal{H} \coloneqq \left \{C \in \mathcal{B}(\mathcal{X})\times \mathcal{B}(\mathcal{Y}): \: \bE[\mathds{1}_C(X,Y) \: | \: \mathcal{F}^\prime] = h_{\mathds{1}_C}(X)  \right\}.
+\end{align}
+
+Indeed, letting $\mathcal{C} = \left\{A \times B: \: A \in \mathcal{B}(\mathcal{X}), \,B \in \mathcal{B}(\mathcal{Y})\right\}$, $\mathcal{C}$ is a $\pi$-system that generates $\mathcal{B}(\mathcal{X})\times \mathcal{B}(\mathcal{Y})$. Moreover the above shows that $\mathcal{C} \in \mathcal{H}$. It is simple to check that $\mathcal{H}$ is a $\lambda$-system. Then, by the $\pi-\lambda$ theorem, $\mathcal{H} = \mathcal{B}(\mathcal{X})\times \mathcal{B}(\mathcal{Y})$. Hence, the claim holds for all simple functions. Now, every $\psi: \mathcal{X}\times \mathcal{Y} \rightarrow \bR$ which is bounded and measurable is the uniform limit of a sequence of simple functions. Hence the claim holds for all $\psi$ by an application of the dominated convergence theorem for conditional expectations. 
+
+\end{proof}
+
+\subsection{Relating to the Unrequited Love Process}
+\label{appendix:recovering}
+In Chapter \ref{chapter:UL1} we propose a framework for summing over the nuisance paths of the leader particle to derive the marginal probability of the follower's path, $\bP(\omega_B)$.  Here we test the validity of the framework by using it to some over the nuisance paths of the follower to recover the behaviour of the leader particle. We will also explain in more detail the matrix algebra used in Section \ref{chapter:UL1}. 
+
+\subsubsection{Matrix Algebra}
+Let 
+\begin{align}
+M = \begin{pmatrix} M_1 & M_2 \\ M_3 & M_4\end{pmatrix}
+\end{align}
+where each $M_i$ is a $2 \times 2$ matrix of real numbers. Let us consider the inner product 
+
+\begin{align}\label{inner-prod-sandwich}
+\bP(\omega_B) = \frac{1}{2}\begin{pmatrix}1 \\ 1 \\ 0 \\ 0 \end{pmatrix}^T\begin{pmatrix} M_1 & 0 \\ M_3 & 0 \end{pmatrix}^{m_1-1}\begin{pmatrix} 0 & M_2 \\ 0 & M_4 \end{pmatrix}^{m_2}\ldots\begin{pmatrix} M_1 & 0 \\ M_3 & 0 \end{pmatrix}^{m_{L+1}-1}M\begin{pmatrix}1 \\ 1 \\ 0 \\ 0 \end{pmatrix}
+\end{align}
+
+as is done in Section \ref{chapter:UL1}. We compute 
+
+\begin{align}
+  \begin{pmatrix} M_1 & 0 \\ M_3 & 0 \end{pmatrix}^{m} =   \begin{pmatrix} M_1^m && 0 \\ M_3M_1^{m-1} & 0 \end{pmatrix} ,\quad \begin{pmatrix} 0 & M_2 \\ 0 & M_4 \end{pmatrix}^m = \begin{pmatrix} 0 & M_2M_4^{m-1} \\ 0 & M_4^m \end{pmatrix}.
+\end{align}
+
+Thus, 
+\begin{align}
+\begin{split}
+  \begin{pmatrix} M_1 & 0 \\ M_3 & 0 \end{pmatrix}^{m}\begin{pmatrix} 0 & M_2 \\ 0 & M_4 \end{pmatrix}^n &=  \begin{pmatrix} M_1^m && 0 \\ M_3M_1^{m-1} & 0 \end{pmatrix}\begin{pmatrix} 0 & M_2M_4^{n-1} \\ 0 & M_4^n \end{pmatrix} \\ 
+  &= \begin{pmatrix}0 & M_1^m M_2 M^{n-1}_4 \\ 0 & M_3M_1^{m-1}M_2M_4^{n-1} \end{pmatrix},
+\end{split}
+\end{align}
+
+\begin{align}
+\begin{split}
+\begin{pmatrix} 0 & M_2 \\ 0 & M_4 \end{pmatrix}^n\begin{pmatrix} M_1 & 0 \\ M_3 & 0 \end{pmatrix}^{m} &= \begin{pmatrix} 0 & M_2M_4^{n-1} \\ 0 & M_4^n \end{pmatrix}\begin{pmatrix} M_1^m && 0 \\ M_3M_1^{m-1} & 0 \end{pmatrix}\\
+&= \begin{pmatrix} M_2M_4^{n-1}M_3M_1^{m-1} & 0 \\ M_4^n M_3 M_1^{m-1} & 0\end{pmatrix},
+\end{split}
+\end{align}
+
+\begin{align}
+\begin{split}
+  \begin{pmatrix} M_1 & 0 \\ M_3 & 0 \end{pmatrix}^{m}M &=   \begin{pmatrix} M_1^m & 0 \\ M_3M_1^{m-1} & 0 \end{pmatrix}\begin{pmatrix}M_1 & M_2 \\ M_3 & M_4\end{pmatrix}\\
+  &= \begin{pmatrix}M_1^{m+1} & M_1^{m}M_2 \\ M_3M_1^{m} & M_3M_1^{m-1}M_2 \end{pmatrix}.
+\end{split}
+\end{align}
+
+Combining these results, one partially evaluates the sandwiched matrix in Eqn. (\ref{inner-prod-sandwich}) to be 
+
+\begin{align}
+\begin{pmatrix}M_1 & 0 \\ M_3 & 0 \end{pmatrix}^{m_1-1}\begin{pmatrix} 0 & M_2 \\ 0 & M_4 \end{pmatrix}^{m_2}\ldots\begin{pmatrix} M_1 & 0 \\ M_3 & 0 \end{pmatrix}^{m_{L+1}-1}M = \begin{pmatrix}\Lambda & \ast \\
+\ast & \ast \end{pmatrix},
+\end{align}
+
+where 
+\begin{align}
+    \Lambda = M_1^{m_1-1}M_2M_4^{m_2-1}M_3M_1^{m_3-1}\ldots M_3M_1^{m_{l+1}-1}.
+\end{align}
+
+Moreover, we have the equality 
+
+\begin{align}
+\begin{split}
+\begin{pmatrix}1 \\ 1 \\ 0 \\ 0 \end{pmatrix}^T \begin{pmatrix}a_{11} & a_{12} & a_{13} & a_{14}\\ 
+a_{21} & a_{22} & a_{23} & a_{24} \\ 
+a_{31} & a_{32} & a_{33} & a_{34} \\
+a_{41} & a_{42} & a_{43} & a_{44} \end{pmatrix} \begin{pmatrix}1 \\ 1 \\ 0 \\ 0 \end{pmatrix} &= a_{11} + a_{12} + a_{21} + a_{22}\\ &= \begin{pmatrix} 1 & 1 \end{pmatrix}\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}\begin{pmatrix} 1 \\ 1 \end{pmatrix}.
+\end{split}
+\end{align}
+
+Hence, we conclude that 
+
+\begin{align}
+\begin{pmatrix}1 \\ 1 \\ 0 \\ 0 \end{pmatrix}^T \begin{pmatrix}\Lambda & \ast \\
+\ast & \ast \end{pmatrix}\begin{pmatrix}1 \\ 1 \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 & 1 \end{pmatrix}\Lambda\begin{pmatrix} 1 \\ 1 \end{pmatrix}
+\end{align}
+
+which is the result used in Section \ref{chapter:UL1}.
+
+\subsubsection{Small Contributions to the Path Density}
+In Section \ref{chapter:UL1} it is claimed that 
+
+\begin{align}
+\lim_{N\rightarrow \infty} \phi = \phi_0 + \phi_1 + \mathcal{O}(\gamma^2/\beta^2). 
+\end{align}
+
+There we make the further claim that the contribution of $\phi_1$ to the inner product (\ref{path-density}) is $\mathcal{O}(\gamma^2/\alpha\beta, \gamma^2/\beta^2)$. In other words, it is claimed that 
+
+\begin{align}
+\begin{pmatrix}1 & 1 \end{pmatrix}\phi_1 \begin{pmatrix}1 \\ 1 \end{pmatrix} = \mathcal{O}(\gamma/(\alpha\beta), \gamma/\beta^2).
+\end{align}
+
+In this appendix we will prove this claim. First, write $\phi_1$ explicitly,
+
+\small  
+\begin{align}
+\begin{split}
+\phi_1 &= \beta^{L/2}(\beta+\gamma)^{L/2}(\gamma/\beta) \sum_{k=1}^{L/2}\bigg [ \left(\prod_{1 \leq i < k}e^{t_{2i-1}W_1}e^{t_{2i}W_4}\right)\\ &\quad \left(\sinh(\alpha t_{2k})e^{t_{2k-1}W_1}\begin{pmatrix}0 & 1 \\ -\beta/(\beta + \gamma) & 0\end{pmatrix}\right)\left(\prod_{k \leq i \leq l/2}e^{t_{2i-1}W_1}e^{t_{2i}W_4}\right) \bigg]e^{t_{L+1}W_1} \\ 
+&= \beta^{L/2}(\beta+\gamma)^{L/2} \mathcal{O}(\gamma/\beta)
+\end{split}
+\end{align}
+\normalsize
+Furthermore, making use of Lemma \ref{mat-exp-lemma}, one shows through straightforward calculation that 
+
+\small
+\begin{align}
+\begin{split}
+\begin{pmatrix} 1 & 1 \end{pmatrix} e^{t_1 W_4} \begin{pmatrix}0 & 1 \\ -\beta/(\beta + \gamma) & 0\end{pmatrix} e^{t_j W_4} \begin{pmatrix} 1 \\ 1 \end{pmatrix} &= e^{-(\alpha + \beta + \gamma/2)(t_i+t_j)}\begin{pmatrix} 1 & 1 \end{pmatrix}\left(\cosh(\alpha t_i) \mathds{1} + \sinh(\alpha t_i) \begin{pmatrix} -\frac{\gamma}{2\alpha} & 1 \\ 1 & \frac{\gamma}{2\alpha}\end{pmatrix}\right)\\ &\quad \quad \begin{pmatrix}0 & 1 \\ -\beta/(\beta + \gamma) & 0\end{pmatrix}\left(\cosh(\alpha t_j) \mathds{1} + \sinh(\alpha t_j) \begin{pmatrix} -\frac{\gamma}{2\alpha} & 1 \\ 1 & \frac{\gamma}{2\alpha}\end{pmatrix}\right) \begin{pmatrix} 1 \\ 1 \end{pmatrix} \\ 
+&= \mathcal{O}(\gamma/\beta, \gamma/\alpha)
+\end{split}
+\end{align}
+
+Indeed, for any term of the form 
+
+\begin{align}\label{terms-single}
+e^{t_i W_k} \begin{pmatrix}0 & 1 \\ -\beta/(\beta + \gamma) & 0\end{pmatrix} e^{t_j W_l}, \quad k,l \in \{1,4\}, 
+\end{align}
+
+there holds 
+
+\begin{align} 
+\begin{pmatrix} 1 & 1 \end{pmatrix}e^{t_i W_k} \begin{pmatrix}0 & 1 \\ -\beta/(\beta + \gamma) & 0\end{pmatrix} e^{t_j W_l}\begin{pmatrix} 1 \\ 1 \end{pmatrix} = \mathcal{O}(\gamma/\alpha,\gamma/\beta). 
+\end{align}
+
+Since the inner product $\begin{pmatrix} 1 & 1\end{pmatrix} \phi_1 \begin{pmatrix} 1 & 1\end{pmatrix}^T $ is a sum of inner products of terms of the form (\ref{terms-single}), we conclude that 
+
+\begin{align} 
+\begin{pmatrix} 1 & 1\end{pmatrix} \phi_1 \begin{pmatrix} 1 \\ 1\end{pmatrix} = \mathcal{O}(\gamma^2/\beta^2, \gamma^2/(\alpha\beta)),
+\end{align}
+
+as claimed. 
+
+
+
+
+
+
+

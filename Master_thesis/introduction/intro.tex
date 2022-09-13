@@ -1,0 +1,217 @@
+\section{Introduction}\label{chapter:intro}
+\subsection{Historical Background}
+\subsubsection{Entropy and The Second Law: Classical Treatment}
+The original formulation of the second law of thermodynamics is due to the British physicist and mathematician William Thomson (later Lord Kelvin) who, in 1851, stated the principle as follows.
+
+\begin{align*}
+  &\textit{``It is impossible, by means of inanimate material agency, to derive mechanical effect from any }\\
+  &\textit{ portion of matter by cooling it below the temperature of the coldest of the surrounding objects.''}\text{\cite{thomson1851dynamical}}
+\end{align*}
+
+Put more plainly, Thomson's principle asserts that \textit{``No process is possible whose sole result is the complete conversion of heat into work.''}\cite[see \S 13.1]{blundell2008concepts} In 1854, the German physicist Rudolf Clausius independently produced a different formulation of the second law.\footnote{In their statements Kelvin and Clausius were both motivated by the previous work of Sadi Carnot on heat engines.}
+
+\begin{align*}
+  &\textit{``Heat can never pass from a colder to a warmer body without some other change,}\\
+  &\textit{connected therewith, occuring at the same time.''}\text{\cite{road_to_ent, clausius1856x}}
+\end{align*}
+
+These statements of the second law are in fact equivalent, and upon their application to a general non-reversible cycle process one can derive the Clausius inequality
+
+\begin{align}\label{clausius-ineq}
+  \oint \frac{\delta Q}{T} \leq 0,
+\end{align}
+
+for any thermodynamic cycle, with equality holding if and only if the cycle is reversible \cite[see \S 13.4 \& \S 13.7]{blundell2008concepts}.\footnote{Claudius proved the case of equality for reversible processes in his 1854 paper \cite{clausius1856x}. } Here $\delta Q$ is the heat entering into the system at temperature $T$. The notation $\delta Q$ reflects the fact that this is an inexact (read `path-dependent') differential. If the process in question is reversible, then the integral on the left-hand side (LHS) of the Clausius inequality (\ref{clausius-ineq}) is path-independent, hence we can identify the state (i.e. path-independent) variable
+
+
+\begin{align}\label{first_ent}
+  S(A) - S(B) = \int^A_B \frac{\delta Q_r}{T}
+\end{align}
+
+where $S(X)$ is the entropy in state $X$ and $\delta Q_r$ is the heat transfer during a reversible process from state $B$ to state $A$. Eqn. (\ref{first_ent}) is our first definition of entropy.\footnote{Here the reader may note that the definition (\ref{first_ent}) only identifies changes in entropy and furthermore that the quantity described is not dimensionless and in fact has units of $\text{J}\cdot\text{K}^{-1}$. The latter issue is characteristic of entropy in classical systems. Since the multiplicity of a classical system is not well defined, one must consider a certain region of phase space as an analogue of multiplicity. This region carries with it the units of action. See the book by Landau and Lifshitz \cite{landau2013statistical} for a detailed discussion. The issue of a fixed zero for entropy is dealt with by the third law of thermodynamics which states that in the limit as the temperature of a crystal lattice approaches zero, its entropy goes to zero. But that is by the way.} Although this is a correct definition of entropy for thermodynamic systems, it does not capture the statistical nature of entropy. Moreover, being stated strictly in terms of thermodynamic quantities, it obscures the generality of the concept of entropy which has found application in many fields, including information theory \cite{ShannonCommunication}, biology \cite{schrodinger2012life}, medicine \cite{bein2006entropy}, and sociology \cite{BaileyKennethD2006Lsta}.
+
+Eqn. (\ref{first_ent}) implies that
+
+\begin{equation}\label{therm_entropy}
+  \rmd S \coloneqq \frac{\delta Q}{T},
+\end{equation}
+
+is in fact an exact differential, and upon comparison with (\ref{clausius-ineq}) one obtains
+
+\begin{equation}\label{unbalanced}
+  \rmd S \geq 0,
+\end{equation}
+
+which is perhaps the most familiar statement of the second law to the contemporary reader.
+
+It was Boltzmann who, in the year 1866, first identified the quantity $\frac{\delta Q_r}{T}$ as an exact differential and formulated the foregoing definition of entropy \cite{sep-statphys-Boltzmann, Cercignani1998-CERLBT-2}. In the following years, from 1868 to 1872, Boltzmann produced several important papers. Among the most notable results obtained by him in this period is that the Maxwell distribution is an attractive stationary point for the velocity distribution of a body of spatially homogeneous gas \cite{sep-statphys-Boltzmann, Cercignani1998-CERLBT-2}.
+
+Historically, at this point, the statistical nature of entropy is not yet clear. Later, through discussions with Josef Loschmidt, and through consideration of Maxwell's demon, Boltzmann went on to explore the entropy from an explicitly statistical point of view \cite{Cercignani1998-CERLBT-2}. However, we shall leave Boltzmann behind and explore this probabilistic point of view with a modern treatment in the next section.
+
+ \subsubsection{Statistical Framework}
+In \textit{``Statistical Field Theory''} Giorgio Parisi provides an excellent discussion of the statistical formulation of entropy and its equivalence to the thermodynamic definition \cite[see \S 1]{parisi1998statistical}. Here we shall give a brief summary of his approach.
+
+Consider a system with configuration space $\mathcal{X}$ and let $\mu$ be a measure on $\mathcal{X}$. Then the system has a ``Hamiltonian'' $H(x)$, $x \in \mathcal{X}$. The fundamental hypothesis of equilibrium statistical mechanics is that the equilibrium probability distribution for this system is given by the so called canonical distribution
+
+
+\begin{equation}\label{fundamental_hypothesis}
+  P_\beta(x) = \frac{e^{-\beta H(x)}}{Z} \rmd\mu,
+\end{equation}
+
+where the partition function $Z$ is fixed by normalisation,
+
+\begin{equation}
+  Z = \int_\mathcal{X} e^{-\beta H} \rmd\mu.
+\end{equation}
+
+The ensemble average of an observable $A(x)$ at equilibrium is given by
+
+\begin{equation}
+  \langle A \rangle_\beta = \int_\mathcal{X} A(x)P_\beta(x) \rmd\mu.
+\end{equation}
+
+The canonical distribution (\ref{fundamental_hypothesis}) is characterised by the fact that it maximises the entropy functional
+
+\begin{equation}\label{shannon-ent}
+  S[P] \coloneqq -\langle \log P \rangle_P = -\int_X P(x)\log P(x)\rmd\mu,
+\end{equation}
+
+
+for a fixed value of $H$. This $S[P]$ is the familiar \textit{Shannon entropy}, after Claude E. Shannon who introduced the notion in his landmark 1948 paper \textit{``A Mathematical Theory of Communication''} \cite{ShannonCommunication}. Let us further define the energy functional $E[P]$ and the free energy functional $\Phi[P]$,
+
+\begin{align}
+  U &= E[P] \coloneqq \langle H \rangle_P \\
+  \Phi[P] &\coloneqq E[P] - \frac{S[P]}{\beta},
+\end{align}
+
+and write
+
+\begin{equation}
+  S_\beta \coloneqq S[P_\beta],
+\end{equation}
+
+for the equilibrium entropy of the system. We can show that for a reversible process $\rmd S_\beta = \rmd S$, where $S$ is the thermodynamic entropy as defined in Eqn. (\ref{first_ent}). First, note that for a thermodynamic system the configuration space $\mathcal{X}$ is precisely the phase space of $N$ positions and $N$ momenta. We will furthermore allow $H$ to depend on a parameter $\lambda$ so that work can be done on the system by varying $\lambda$. Thus, $H = H(q,p,\lambda)$, where $ q = (q_1, \ldots, q_N)$ are the positions and $p = (p_1, \ldots, p_N)$ are the momenta of the system. Hence the partition function is
+
+\begin{equation}\label{partition_thermo}
+  Z = \int H(p,q,\lambda)P_\beta dpdq.
+\end{equation}
+
+The first law of thermodynamics states
+
+\begin{equation}
+  \delta Q =  dU - \delta W,
+\end{equation}
+
+therefore, by Eqn. (\ref{therm_entropy}), $dS =  (dU - \delta W)/T$. Now, if
+
+\begin{equation}\label{beta_equiv}
+  \beta \delta Q = \beta ( dU - \delta W) = dS_\beta,
+\end{equation}
+
+then $\beta \delta Q$ is an exact differential, i.e. $\beta$ is proportional to $1/T$. From this we could then conclude that $dS_\beta = dS$, and $S_\beta = S$ up to an additive constant. It remains to prove Eqn. (\ref{beta_equiv}). From Eqn. (\ref{partition_thermo}) we derive the differential
+
+\begin{equation}\label{logZ_diff}
+  -d(\log Z) = U d\beta + \beta \left\langle\frac{dH}{d\lambda}\right\rangle_\beta d\lambda = U d\beta + \beta \delta W.
+\end{equation}
+
+Moreover, from the definitions of $\Phi$ and $Z$, we observe that
+
+\begin{equation}\label{equil_free_energy}
+  \Phi[P_\beta] = -\frac{1}{\beta}\log Z = U - \frac{S_\beta}{\beta}.
+\end{equation}
+
+Eqn. (\ref{beta_equiv}) now follows from  Eqns. (\ref{logZ_diff}) and (\ref{equil_free_energy}) \cite{parisi1998statistical}.
+
+
+\subsection{The Present Work}
+
+\subsubsection{Motivation and Objectives}
+Stochastic thermodynamics aims to extend classical extensive thermodynamic state variables, such as heat, work, free energy, and entropy, to microscopic and mesoscopic systems \cite{peliti2021stochastic,esposito2012stochastic}. Stochastic thermodynamics is typically concerned with systems with characteristic length ranging from a few nanometres to a few hundred. Examples include colloidal particles, quantum dots, biological molecular engines, biological polymers (such as DNA and RNA), enzymes, and magnetic domains in ferromagnets \cite{seifert2012stochastic, esposito2012stochastic, bustamante2005nonequilibrium}. Understanding the workings of these systems requires a formal treatment of stochastic fluctuation which become non-negligible to the dynamics at this scale. In the last thirty years, new experimental methods have allowed researchers to access and manipulate the microscopic degrees of freedom that govern systems on the nanometre scale \cite{strick2000twisting}. Observations made using these methods spurred the development of fluctuation theorems \cite{sevick2008fluctuation}. These theorems relate the ratio of probabilities of second law observing and second law violating trajectories to the extensive state variables of the initial and final states. A prototypical example is the Gallovati-Cohen fluctuation theorem which states that for a broad class of systems \cite{gallavotti1995dynamical} 
+
+\begin{align}
+\log \frac{\bP(\mathcal{\sigma})}{\bP(-\mathcal{\sigma})} = \mathcal{\sigma},
+\end{align}
+
+where $\sigma$ is the entropy production along a phase space trajectory. 
+
+A consequence of this and similar results is that entropy production plays a key role in determining the rate of convergence to equilibrium given non-equilibrium initial conditions. More generally, the entropy production rate quantifies time-reversal symmetry breaking for the system. Moreover, the long-time entropy production rate distinguishes systems on approach to equilibrium from those exhibiting Non-Equilibrium Steady State (NESS) behaviour. An NESS is a statistical steady state of an open system whereby the system is driven out of equilibrium by the environment. The living room window pane on a cold winter day that is exposed to two heat baths at different temperatures (inside is the warm room, outside is the cold weather) is an example of a system displaying NESS behaviour. Since the heat baths are at different temperatures, in the steady state there is a constant flow of heat through the glass, out from the room and into the cold reservoir outside. For our purposes, a probability measure $\mu_s$ is an NESS for the process with transition function $p(x\rightarrow y) = p(x,y)$ if it is a steady state of this process but does \emph{not} satisfy the detailed balance condition 
+
+\begin{align}
+\mu_s(x)p(x,y) = \mu_s(y)p(y,x), \quad \forall x,y.
+\end{align}
+
+Another emerging interest within stochastic thermodynamics has been the study of molecular motors \cite{parrondo2002energetics}. These are driven by chemical or biochemical processes. Biological motors in particular have the advantage that they can operate at low energies and in noisy conditions \cite{faisal2008noise,eldar2010functional}. In addition, despite their small size, they operate with surprising efficiency \cite{abdelmohsen2014micro} . It is hoped that such biological engines can be used to overcome present challenges in healthcare, sustainability, and security \cite{bechinger2016active}. Examples of natural molecular motors include the kinesin motor\cite{bustamante2005nonequilibrium} and the flagella of microorganisms \cite{poon2013clarkia}. The maximum efficiency of these engines is closely related to their entropy production rate \cite{pietzonka2016universal}.
+
+For these reasons the entropy production rate of stochastic processes has become an active sub-field of the stochastic thermodynamics literature \cite{nardini2017entropy,van2022thermodynamic,cocconi2022scaling,frydel2022intuitive}. For the study of entropy production, stochastic processes can be grouped into Markov and non-Markov models. They can also be grouped according to their state-space into discrete or continuous state-space processes. The literature on entropy production in continuous-time Markov chains has benefited from the earlier works of Kolmogorov and Schnakenberg. Kolmogorov's reversibility criterion established necessary and sufficient conditions for the reversibility of a  continuous-time, discrete-state Markov chain \cite[pp. 21-24]{kelly2011reversibility}. Schnakenberg derived a general expression for the steady-state entropy production of a discrete-state Markov chain by beginning from the master equation and using a graph theoretic approach \cite{schnakenberg1976network}. For continuous state-space processes which can be expressed as solutions to an SDE, deriving the entropy production is essentially a matter of solving the very well-studied forward Kolmogorov equation for the process \cite{cocconi2020entropy,garcia2021run}.
+
+The case of non-Markov processes is physically and mathematically more interesting. For a physical system, whenever every degree of freedom for the dynamics is accessible, the system admits a Markov description. However, Experimentally, this is almost never the case \cite{gardiner1985handbook}. Approaches to treating non-Markov processes arising from a time-delay in the dynamics \cite{loos2019heat} ,from slow relaxation of the environment \cite{kutvonen2015entropy}, or from coarse-graining of states \cite{busiello2019entropy} have appeared in the literature. What is lacking in all of these cases is an exactly solvable reference model (similar to the quantum harmonic oscillator in quantum mechanics) that demonstrates known theoretical results and serves as an anchor for studying more complex system. Our objective throughout this thesis has been to produce such a paradigmatic model. In all of our attempts we begin with a Markov system that becomes non-Markov through coarse-graining of states. 
+
+\subsubsection{Results}
+In Section \ref{chapter:telegraph} we outline our novel methodology for the derivation of path probabilities and apply it to the well-known telegraph process. We then proceed to recover the known time-evolution and entropy production rate of this process using our original path-space derivation. In section \ref{chapter:waiting-room} we begin with a four-state continuous-time Markov chain which is made non-Markov through collapsing (coarse-graining) two states into a single `waiting room'. We then apply the methodology detailed in Section \ref{chapter:telegraph} to analytically derive a closed-form for the entropy production rate of this coarse-grained process. This is the first instance of a closed-form expression for the entropy production of a non-Markov process in the statistical thermodynamics literature. 
+
+In Section \ref{chapter:UL1} we derive an expression for the coarse-grained path probabilities of the elusive `Unrequited Love' (UL) process. We then present an original perturbative approach to evaluating these path probabilities. The problem is then cast in terms of a generalised generating function. It is hoped that this generating function approach can be used to obtain a closed-form expression for the path-probabilities of the UL process. Section \ref{chapter:RnT} gives the derivation of a new perturbation theory for calculating the entropy production of coarse-grained diffusion processes. The theory is then applied to calculate the leading order contribution to the entropy production rate of an asymmetric Run-and-Tumble (RnT) particle. We conclude in Section \ref{chapter:classification} by proposing an original classification of non-Markov processes based on the distinguishing features of the systems studied in this text. 
+
+The remainder of the Introduction shall give a brief overview of the concept of entropy production. 
+
+\subsubsection{Entropy Production}\label{subsection:entropy-prod-discussion}
+In equilibrium statistical mechanics, entropy can be interpreted as the disorder exhibited by a system in a certain statistical ensemble \cite{wehrl1978general}. The stationary state is then the distribution that maximises this disorder. For a closed system governed by Hamiltonian dynamics, this statistical equilibrium state is preserved by time evolution due to Liouville's theorem. For example, in the canonical ensemble, where the system is assumed to be at temperature $T$, the Boltzmann distribution maximises the entropy of the system. Hence the Boltzmann distribution is the statistical steady state for the canonical ensemble. Classical definition of entropy (such as the Shannon, Gibbs, and Boltzmann entropies) are notions of steady-state entropy. They are concerned with the phase-space of the system, $\mathcal{X}$, and not with trajectories along the phase-space. This space of trajectories along the phase-space, or the path-space of a system, we shall henceforth denote by $\Omega$. 
+
+For non-equilibrium systems, one would like to study the entropy production rate on approach to the steady state and to characterise the steady states themselves as true equilibrium steady states or NESSs  \cite{NESS_identify}. Moreover, the probability of observing trajectories that break the second law is related to the entropy production via the relevant fluctuation theorem  \cite[see \S 7]{gallavotti1995dynamical, exten-fluctuation_thm}. A fluctuation theorem expresses the ratio of the probabilities of forward and reverse trajectories in terms of their respective entropy productions. A definition of entropy at the level of trajectories will also allow us to consider the time derivative of entropy production, the entropy production rate, which is a central object in stochastic thermodynamics. For these reasons, we shall define in the sequel the `dynamical entropy', which holds over the space of trajectories.    
+
+Let $\mu_0$ be a measure on the phase space $\mathcal{X}$ and $\mu_t$ be the solution to the continuity equation
+
+\begin{align}\label{continuity-equation}
+\frac{\partial \mu_t}{\partial t} + J[\mu_t] = 0,
+\end{align}
+with initial condition $\mu_t(0) = \mu_0$. A boundary condition is always provided by the normalisation condition $\int \rmd \mu_t = 1$. Other boundary conditions will be system specific. The current functional, $J$, will also depend on the system dynamics. When the model is of a continuous-time discrete-state Markov chain, Eqn. (\ref{continuity-equation}) becomes a master equation. If the system is governed by a Stochastic Differential Equation (SDE), then (\ref{continuity-equation}) is the forward Kolmogorov (or Fokker-Plank) equation. $\mu_t$ imposes a measure on $\Omega$, call it $\bP_{\mu_t}$. 
+
+
+Dynamical entropy gives a measure of time irreversibility along the trajectory space. Suppose we measure the system at time $n\tau$ for some time step $\tau$. Denote the state observed at $n\tau$ by $x_n \in \mathcal{X}$. Let $T = N\tau$ be the final observation time. Letting $\omega = \{x_1, x_2\ldots, x_N\}$ be an element of $\Omega$ the time-reversed trajectory is given by $\omega^\ast = \{ \phi x_N, \phi x_{n-1} \ldots, \phi x_1\}$, where $\phi$ is the time-reversal operator. The inclusion of the time-reversal operator in this description is necessary because the phase space may not transform trivially under time reversal. For example, in a 3-dimensional Hamiltonian $N$ particle system we have $x = \left(q_i^j, p_i^j\right)$, $i = 1, \ldots N$, $j = 1,2,3$, where $q_i^j, p_i^j$ are the positions and momenta respectively. Then $\phi x = \left(q_i^j, -p_i^j\right)$, i.e. the sign of the momenta is flipped under time reversal. 
+
+The dynamical entropy production across $\omega$ is given by \cite{maes2003time} 
+
+\begin{align}
+\log \frac{\bP_{\mu_t}(\omega)}{\bP_{\mu_{T-t}}(\omega^\ast)} = \log \left ( \frac{\bP_{\mu_t}\left(\{ x_1, \ldots, x_n\} \right )}{\bP_{\mu_{T-t}}\left(\{ \phi x_N, \ldots, \phi x_1\}\right)} \right).
+\end{align}
+
+$\mu_{T-t}$ is obtained by solving (\ref{continuity-equation}) subject to a final condition $\mu_t(T)= \mu_T$. 
+
+The expected entropy production of the system in time $T$ is then 
+
+\begin{align}\label{ent-prod-main}
+\mathcal{S} = \bE \left [\log \frac{\rmd\bP_{\mu_t}(\omega)}{\rmd\bP_{\mu_{T-t}}(\omega^\ast)} \right],
+\end{align}
+
+where the expectation is taken over the forward ensemble $\bP_{\mu_t}$. That $\bP_{\mu_t}$ is absolutely continuous w.r.t. $\bP_{T-t}$, and hence that the Radon-Nykodym derivative exists, is a consequence of dynamic reversibility. In the limit $T \rightarrow \infty$, the dynamical entropy production rate $\entpp$ is given by \cite{gaspard2004time}
+
+\begin{align}\label{ent-prod-rate-main}
+\entpp= \lim_{T\rightarrow \infty} \frac{1}{T} \bE \left [\log \frac{\rmd\bP_{\mu_t}(\omega)}{\rmd\bP_{\mu_{T-t}}(\omega^\ast)} \right].
+\end{align}
+
+Observe that, as a consequence of the normalisation of $\bP_{\mu_T-t}$,
+\begin{align}
+\bE \left [\exp \left ( -\log \frac{\rmd\bP_{\mu_t}(\omega)}{\rmd\bP_{\mu_{T-t}}(\omega^\ast)}\right) \right] = 1. 
+\end{align}
+
+An application of Jensen's inequality then yields, 
+
+\begin{align}
+\exp\left ( -\bE \left[ \log \frac{\rmd\bP_{\mu_t}(\omega)}{\rmd\bP_{\mu_{T-t}}(\omega^\ast)}\right]\right) = e^{-\mathcal{S}} \leq 1,
+\end{align}
+
+which shows that $\mathcal{S}$ and $\entpp$ are non-negative. 
+
+In what follows, we  derive the entropy production rate, $\entpp$, in specific coarse-grained systems by first characterising their path space measure $\bP_{\mu_t}$ and subsequently calculating the expectation (\ref{ent-prod-rate-main}) explicitly. We present an exact closed form expression for $\entpp$ for the `waiting room' system in Section \ref{chapter:waiting-room}. This is the first example in the literature of a closed form expression for the entropy production of a current-free system. In Section \ref{chapter:RnT}, we derive a novel perturbative approach to evaluating the entropy production of a large class of coarse-grained diffusion processes. We use this approach to find the leading order contribution to the entropy production of an asymmetric RnT particle when the tumbling process is hidden from the observer. We conclude by proposing a classification of non-Markov processes to guide future work.
+
+We will begin by giving a derivation of our methods in Section \ref{chapter:telegraph}. We then apply our methods to the telegraph process and recover its entropy production. To the author's knowledge, Section \ref{chapter:telegraph} includes the first derivation of a closed-form result for the entropy production of a non-trivial system beginning from a path-space formulation. Hence, it serves to demonstrate the theoretical results on dynamic entropy found elsewhere in the literature. \newpage
+
+
+
+
+
+
+
+
+
+
+

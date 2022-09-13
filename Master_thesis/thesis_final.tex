@@ -1,0 +1,148 @@
+\documentclass[a4paper, twoside, colorlinks=true, allcolors=blue]{article}
+%% Language and font encodings
+\usepackage[%
+style=phys, %
+articletitle = false, biblabel = brackets, %
+pageranges = false, chaptertitle = false, url = false]{biblatex}
+\AtBeginBibliography{%
+\urlstyle{rm}%
+}
+\addbibresource{bibs/ref.bib}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb, amsmath, amsthm, dsfont}
+\usepackage{mathtools}
+\usepackage{bbold}
+\usepackage{physics}
+\usepackage{pgfplots}
+\usepackage{mmacells}
+\usepackage{changepage}
+\pgfplotsset{compat = 1.8}
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{eufrak}
+%% Useful packages
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[labelfont={bf,footnotesize}]{caption}
+\usepackage{subcaption}
+
+
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[]{hyperref}
+\numberwithin{equation}{section}
+\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
+  {\iffieldundef{prenote}
+     {}
+     {\BibliographyWarning{Ignoring prenote argument}}%
+   \iffieldundef{postnote}
+     {}
+     {\BibliographyWarning{Ignoring postnote argument}}%
+   \bibopenbracket}%
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\supercitedelim}
+  {\bibclosebracket}
+
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+\newcommand{\bQ}{\mathds{Q}}
+\newcommand{\bR}{\mathds{R}}
+\newcommand{\bC}{\mathds{C}}
+\newcommand{\bN}{\mathds{N}}
+\newcommand{\bZ}{\mathds{Z}}
+\newcommand{\bP}{\mathds{P}}
+\newcommand{\bE}{\mathds{E}}
+\newcommand{\rmd}{\mathrm{d}}
+\newcommand{\entpp}{\dot{\mathcal{S}}}
+\newcommand{\Overline}[1]{\overline{\overline{#1}}}
+\newcommand{\ai}[0]{\scalebox{0.7}{$\square$}}
+
+\setlength\parindent{0pt}
+\setlength\parskip{5pt}
+
+% \DeclarePairedDelimiter\abs{\lvert}{\rvert}
+% \makeatletter
+% \let\oldabs\abs
+% \def\abs{\@ifstar{\oldabs}{\oldabs*}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{prop}{Proposition}
+
+
+\title{Path Probabilities and Entropy Production of Non-Markov Processes}
+\author{Farid Kaveh}
+% Update supervisor and other title stuff in title/title.tex
+
+\begin{document}
+\input{title/title.tex}
+\renewcommand{\abstractname}{\normalsize Declaration}
+\begin{abstract}\normalsize
+    The work contained herein is my own unless otherwise indicated. 
+    
+    
+    
+    \vspace{1cm}
+    \quad \quad Farid Kaveh
+\end{abstract}
+\newpage
+\renewcommand{\abstractname}{\normalsize Abstract}
+\begin{abstract}\normalsize 
+We investigate the entropy production rate of several concrete examples of non-Markov systems using a path-space approach. The validity of this approach is confirmed through application to the telegraph process. An exact closed-form expression for the entropy production rate of a current-free system is presented. We develop a perturbation theory for the entropy production rate of one-dimensional diffusion processes with stochastic, time-dependent drift coefficient when the process driving the drift is not experimentally accessible. This theory is applied to an asymmetric Run-and-Tumble particle to derive the leading order contribution to the entropy production rate of this process. We conclude by identifying some unifying paradigms among `non-Markov' processes that have attracted attention in the stochastic thermodynamics literature and relating back to the theory of stochastic processes. 
+\end{abstract}
+\newpage
+\renewcommand{\abstractname}{\normalsize Acknowledgements}
+\begin{abstract}\normalsize
+I would like to thank everyone in the Non-Equilibrium Systems group at Imperial College London. I learned much from this group and our daily conversations were a constant source of inspiration for me. Special acknowledgments go to
+
+\begin{itemize}
+\item my supervisor, Dr Gunnar Pruessner, for his indispensable insight and guidance, 
+\item Jacob Knight, whose contributions to this text cannot be overstated, and 
+\item Luca Cocconi and Connor Roberts, who provided much needed criticism of this thesis. 
+\end{itemize}
+\end{abstract}
+\newpage
+\renewcommand{\abstractname}{\normalsize Dedication}
+\begin{abstract}\normalsize
+\vspace{3cm}
+\textit{``All is number''} 
+\vspace{2cm}
+
+
+\begin{quote}
+``No one knows what entropy
+really is, so in a debate you will always
+have the advantage.''
+\end{quote}
+
+\hfill ---Jon von Neumann to Claude E. Shannon.
+\end{abstract}
+\newpage
+
+\tableofcontents
+\listoffigures
+\newpage
+%\input{introduction/introduction.tex}
+%\input{background/background.tex}
+%\input{project/project.tex}
+%\input{evaluation/evaluation.tex}
+%\input{conclusion/conclusion.tex}
+%\input{appendix/appendix.tex}
+\input{introduction/intro.tex}
+\input{two_state_system/two_state_system.tex}
+\input{the_waiting_room/waiting_room.tex}
+\input{Unreq_love/UL.tex}
+\input{asymmetric_RnT/asymmetric_Rnt.tex}
+\input{classification/classification.tex}
+\input{conclusion/conclusion.tex}
+\input{Appendix/appendix.tex}
+
+
+
+
+\printbibliography
+
+\end{document}
